@@ -1,12 +1,19 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Application from './components/Application';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './configureStore';
+
+import Application from './components/App';
 
 // Say something
 console.log('[ERWT] : Renderer execution started');
 
-// Application to Render
-const app = <Application />;
-
 // Render application in DOM
-createRoot(document.getElementById('app')).render(app);
+createRoot(document.getElementById('app')).render(
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <Application />
+        </PersistGate>
+    </Provider>
+);

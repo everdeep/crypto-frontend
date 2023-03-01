@@ -45,12 +45,12 @@ body,
 }
 
 body {
-    margin: 0;
-    font-size: var(--app-font-size);
-    font-family: var(--app-font-family);
-    color: var(--app-color);
-    background: var(--app-bgcolor);
-    line-height: 1.5;
+    margin: 0 !important;
+    font-size: var(--app-font-size) !important;
+    font-family: var(--app-font-family) !important;
+    color: var(--app-color) !important;
+    background: var(--app-bgcolor) !important;
+    line-height: 1.5 !important;
 }
 
 h1 {
@@ -225,7 +225,8 @@ button {
     // user-select: none;
     display: flex;
     flex-direction: column;
-    max-height: 800px;
+    // max-height: 800px;
+    min-width: 300px;
     justify-content: space-between;
     background: var(--erwt-bgcolor);
     margin: 0 auto;
