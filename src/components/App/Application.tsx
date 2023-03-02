@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute';
 import { alertClear } from '../../actions';
@@ -13,13 +13,19 @@ import './Application.scss';
 import 'semantic-ui-css/semantic.min.css'
 
 import Welcome from '../Welcome';
-import MenuBar from '../MenuBar';
+import { Navigation } from '../Navigation';
 import Alert from '../Alert';
 import LoginForm from '../Authentication/LoginForm';
 import RegisterForm from '../Authentication/RegisterForm';
 import ResetPassword from '../Authentication/ResetPassword';
 import Settings from '../Settings';
 import ProfileDetails from '../Settings/ProfileDetails';
+import Verification from '../Settings/Verification';
+import Preferences from '../Settings/Preferences';
+import Password from '../Settings/Password';
+import Security from '../Settings/Security';
+import Accounts from '../Settings/Accounts';
+import Referrals from '../Settings/Referrals';
 import NotFound from '../NotFound';
 
 // Transition settings
@@ -38,7 +44,7 @@ const transitionStyles: Partial<Record<TransitionStatus, CSS.Properties>> = {
 interface ApplicationProps {
     isSignedIn: boolean;
     alert: any;
-    alertClear: any;
+    alertClear: () => void;
 };
 
 const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear }) => {
@@ -95,7 +101,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 
     return (
         <BrowserRouter>
-            {isSignedIn && <MenuBar />}
+            {isSignedIn && <Navigation toggleTheme={toggleTheme} isDarkTheme={darkTheme} />}
 
             {alert.active && (
                 <Transition className='alert' nodeRef={nodeRef} in={alert.active} timeout={duration}>
@@ -117,7 +123,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                     <Route path='register' element={<RegisterForm />} />
                     <Route path='reset-password' element={<ResetPassword />} />
                 </Route>
-
+                
                 <Route element={<ProtectedRoute isSignedIn={isSignedIn} />} >
                     <Route index element={<div>Home</div>} />
                     <Route path='portfolio' element={<div>Portfolio</div>} />
@@ -127,12 +133,12 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                     <Route path='settings' element={<Settings />}>
                         <Route index element={<ProfileDetails />} />
                         <Route path='user' element={<ProfileDetails />} />
-                        <Route path='verification' element={<div>Verification</div>} />
-                        <Route path='preferences' element={<div>Preferences</div>} />
-                        <Route path='password' element={<div>Password</div>} />
-                        <Route path='security' element={<div>Security</div>} />
-                        <Route path='accounts' element={<div>Accounts</div>} />
-                        <Route path='referrals' element={<div>Referrals</div>} />
+                        <Route path='verification' element={<Verification />} />
+                        <Route path='preferences' element={<Preferences />} />
+                        <Route path='password' element={<Password />} />
+                        <Route path='security' element={<Security />} />
+                        <Route path='accounts' element={<Accounts />} />
+                        <Route path='referrals' element={<Referrals />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>
                     

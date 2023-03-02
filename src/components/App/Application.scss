@@ -137,7 +137,7 @@ button {
         font-weight: 300;
         color: var(--erwt-heading-color);
         line-height: 1;
-        text-transform: uppercase;
+        // text-transform: uppercase;
     }
 }
 
@@ -243,4 +243,12 @@ button {
         padding: 2rem;
         background: var(--app-footer-bgColor);
     }
+}
+
+
+// ==============================
+// Semantic UI Globals
+// ==============================
+.divider {
+    border-color: var(--ui-divider-color) !important;
 }

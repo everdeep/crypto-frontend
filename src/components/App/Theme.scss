@@ -23,6 +23,7 @@
         Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
         sans-serif;
     --app-bgcolor: #202020;
+    --app-bgcolor-secondary: #111;
     --app-border-color: #3b3f44;
     --app-color: #fff;
 
@@ -68,6 +69,18 @@
     // ERWT
     --erwt-bgcolor: #262626;
     --erwt-heading-color: #dddddd;
+
+    // ================================
+    // Semantic UI components
+    // ================================
+    --ui-bgcolor: #262626;
+    --ui-color: #dddddd;
+    --ui-border-color: #3b3f44;
+    --ui-accent-color: #32639f;
+    --ui-accent-color-hover: #2f77ca;
+
+    // Divider
+    --ui-divider-color: #3b3f44;
 }
 
 /*
