@@ -42,7 +42,7 @@ const Settings: React.FC = () => {
                 <Menu.Item
                     as={NavLink}
                     to='referrals'
-                    content='Refer a Friend'
+                    content='Referrals'
                 />
             </Menu>
 

@@ -12,12 +12,22 @@ import CSS from 'csstype';
 import './Application.scss';
 import 'semantic-ui-css/semantic.min.css'
 
+// Public Components
 import Welcome from '../Welcome';
 import { Navigation } from '../Navigation';
 import Alert from '../Alert';
 import LoginForm from '../Authentication/LoginForm';
 import RegisterForm from '../Authentication/RegisterForm';
 import ResetPassword from '../Authentication/ResetPassword';
+
+// Platform components
+import Dashboard from '../Dashboard';
+import Portfolio from '../Portfolio';
+import Terminal from '../Terminal';
+import Market from '../Market';
+import News from '../News';
+
+// Settings components
 import Settings from '../Settings';
 import ProfileDetails from '../Settings/ProfileDetails';
 import Verification from '../Settings/Verification';
@@ -52,6 +62,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
     const nodeRef = React.useRef(null);
 
     const [darkTheme, setDarkTheme] = useState(true);
+    const [notFound, setNotFound] = useState(false);
 
     /**
      * On component mount
@@ -101,7 +112,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 
     return (
         <BrowserRouter>
-            {isSignedIn && <Navigation toggleTheme={toggleTheme} isDarkTheme={darkTheme} />}
+            {isSignedIn && !notFound && <Navigation toggleTheme={toggleTheme} isDarkTheme={darkTheme} />}
 
             {alert.active && (
                 <Transition className='alert' nodeRef={nodeRef} in={alert.active} timeout={duration}>
@@ -117,7 +128,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
             )}
 
             <Routes>
-                <Route element={<ProtectedRoute isSignedIn={!isSignedIn} redirectPath='/platform' />} >
+                <Route element={<ProtectedRoute isSignedIn={!isSignedIn} redirectPath='/' />} >
                     <Route path='welcome' element={<Welcome />} />
                     <Route path='login' element={<LoginForm />} />
                     <Route path='register' element={<RegisterForm />} />
@@ -125,11 +136,11 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                 </Route>
                 
                 <Route element={<ProtectedRoute isSignedIn={isSignedIn} />} >
-                    <Route index element={<div>Home</div>} />
-                    <Route path='portfolio' element={<div>Portfolio</div>} />
-                    <Route path='terminal' element={<div>Terminal</div>} />
-                    <Route path='market' element={<div>Market</div>} />
-                    <Route path='news' element={<div>News</div>} />
+                    <Route index element={<Dashboard />} />
+                    <Route path='portfolio' element={<Portfolio />} />
+                    <Route path='terminal' element={<Terminal />} />
+                    <Route path='market' element={<Market />} />
+                    <Route path='news' element={<News />} />
                     <Route path='settings' element={<Settings />}>
                         <Route index element={<ProfileDetails />} />
                         <Route path='user' element={<ProfileDetails />} />
@@ -139,14 +150,13 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                         <Route path='security' element={<Security />} />
                         <Route path='accounts' element={<Accounts />} />
                         <Route path='referrals' element={<Referrals />} />
-                        <Route path="*" element={<NotFound />} />
+                        <Route path="*" element={<Navigate to="/error" replace />} />
                     </Route>
                     
 
                 </Route>
 
-
-                <Route path="error" element={<NotFound />} />
+                <Route path="error" element={<NotFound setNotFound={setNotFound}/>} />
                 <Route path="*" element={<Navigate to="/error" replace />} />
             </Routes>
         </BrowserRouter>

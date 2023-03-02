@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Container } from 'semantic-ui-react';
+
 const Referrals: React.FC = () => {
     return (
-        <div className='content'>
-            Referrals
-        </div>
+        <Container>
+            <h1>Referrals</h1>
+        </Container>
     );
 }
 

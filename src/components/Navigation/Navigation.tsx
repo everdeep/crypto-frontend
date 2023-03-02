@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
-import { redirect } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { signOut } from '@src/actions';
 import { logout } from '@src/api/authService';
 
@@ -18,13 +18,15 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ signOut, toggleTheme, isDarkTheme }) => {
 
+    const navigate = useNavigate();
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        logout(); // Clear the session
+        logout(); // Clear the server session
         signOut(); // Clear the redux store
-        return redirect('/');
+        navigate('/welcome');
     }
     
     return (
