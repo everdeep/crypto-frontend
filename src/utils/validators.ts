@@ -1,19 +1,19 @@
-export const required = (value) => (value ? undefined : 'Required');
+export const required = (value: any) => (value ? undefined : 'Required');
 
-export const checkboxRequired = (props) => {
+export const checkboxRequired = (props: any) => {
     console.log(props);
-    return undefined;
+    return false;
 };
 
-export const mustBeNumber = (value) =>
+export const mustBeNumber = (value: any) =>
     isNaN(value) ? 'Must be a number' : undefined;
 
-export const minValue = (min) => (value) =>
+export const minValue = (min: number) => (value: number) =>
     isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`;
 
 export const composeValidators =
-    (...validators) =>
-    (value) =>
+    (...validators: any[]) =>
+    (value: any) =>
         validators.reduce(
             (error, validator) => error || validator(value),
             undefined,

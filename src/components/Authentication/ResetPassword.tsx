@@ -2,10 +2,9 @@ import React from 'react';
 import {
     Form,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { formUpdate, formClear, alertSet } from '../../actions';
-import { useNavigate } from 'react-router-dom';
+import { formUpdate, formClear, alertSet } from '@src/actions';
 
 import './auth.scss';
 
@@ -14,7 +13,7 @@ interface ResetPasswordProps {
     formUpdate: (name: string, value: string) => void;
     formClear: () => void;
     alertSet: (message: string, type: string) => void;
-};
+}
 
 const ResetPassword: React.FC<ResetPasswordProps> = ({form, formUpdate, formClear, alertSet}) => {
     const navigate = useNavigate();

@@ -2,13 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, Sidebar, Divider } from 'semantic-ui-react'
 
-import { icons } from '../App/Icons';
+import { icons } from '@src/components/App/Icons';
 
 interface SideBarProps {
     handleLogout: () => void;
     setSidebarOpen: (open: boolean) => void;
     open: boolean;
-};
+}
 
 const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open }) => {
 

@@ -1,42 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes, Navigate, redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ProtectedRoute from '../ProtectedRoute';
-import { alertClear } from '../../actions';
 import { Transition } from 'react-transition-group';
 import {
     TransitionStatus,
 } from 'react-transition-group/Transition';
 import CSS from 'csstype';
 
+// SCSS
 import './Application.scss';
 import 'semantic-ui-css/semantic.min.css'
 
+import { alertClear } from '@src/actions';
+import ProtectedRoute from '@src/components/ProtectedRoute';
+
 // Public Components
-import Welcome from '../Welcome';
-import { Navigation } from '../Navigation';
-import Alert from '../Alert';
-import LoginForm from '../Authentication/LoginForm';
-import RegisterForm from '../Authentication/RegisterForm';
-import ResetPassword from '../Authentication/ResetPassword';
+import Welcome from '@src/components/Welcome';
+import { Navigation } from '@src/components/Navigation';
+import Alert from '@src/components/Alert';
+import LoginForm from '@src/components/Authentication/LoginForm';
+import RegisterForm from '@src/components/Authentication/RegisterForm';
+import ResetPassword from '@src/components/Authentication/ResetPassword';
 
 // Platform components
-import Dashboard from '../Dashboard';
-import Portfolio from '../Portfolio';
-import Terminal from '../Terminal';
-import Market from '../Market';
-import News from '../News';
+import Dashboard from '@src/components/Dashboard';
+import Portfolio from '@src/components/Portfolio';
+import Terminal from '@src/components/Terminal';
+import Market from '@src/components/Market';
+import News from '@src/components/News';
 
 // Settings components
-import Settings from '../Settings';
-import ProfileDetails from '../Settings/ProfileDetails';
-import Verification from '../Settings/Verification';
-import Preferences from '../Settings/Preferences';
-import Password from '../Settings/Password';
-import Security from '../Settings/Security';
-import Accounts from '../Settings/Accounts';
-import Referrals from '../Settings/Referrals';
-import NotFound from '../NotFound';
+import Settings from '@src/components/Settings';
+import ProfileDetails from '@src/components/Settings/ProfileDetails';
+import Verification from '@src/components/Settings/Verification';
+import Preferences from '@src/components/Settings/Preferences';
+import Password from '@src/components/Settings/Password';
+import Security from '@src/components/Settings/Security';
+import Accounts from '@src/components/Settings/Accounts';
+import Referrals from '@src/components/Settings/Referrals';
+import NotFound from '@src/components/NotFound';
 
 // Transition settings
 const duration = 800;
@@ -55,7 +57,7 @@ interface ApplicationProps {
     isSignedIn: boolean;
     alert: any;
     alertClear: () => void;
-};
+}
 
 const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear }) => {
 

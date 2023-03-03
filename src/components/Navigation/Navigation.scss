@@ -1,17 +1,23 @@
 @import '../App/Theme.scss';
 
-.menubar {
-    // position: absolute;
-    // top: 0;
+.navbar {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    margin-bottom: 0 !important;
-    padding: 0 250px !important;
     background-color: var(--app-bgcolor-secondary) !important;
+    z-index: 1000;
 
-    > .menu-item {
-        cursor: pointer;
-        height: 100% !important;
-        transition: all 0.2s ease-in-out;
+    .menubar {
+        max-width: 1420px;
+        width: 100% !important;
+
+        > .menu-item {
+            cursor: pointer;
+            height: 100% !important;
+            transition: all 0.2s ease-in-out;
+        }
     }
 }
 
@@ -50,19 +56,19 @@
     .text {
         color: var(--app-color) !important;
     }
-
 }
 
-.sidebar, .dropdown {
+.sidebar,
+.dropdown {
     .item {
         align-items: left !important;
-    
+
         > div {
             display: flex;
             flex-direction: row;
             align-items: center;
         }
-    
+
         div > img {
             filter: invert(1);
             width: 24px;
@@ -76,8 +82,6 @@
             font-size: 16px;
         }
     }
-
-    
 }
 
 // Adjust Nav when window size reduced
@@ -85,9 +89,6 @@
     display: none;
 }
 @media (max-width: 1300px) {
-    .menubar {
-        padding: 0 !important;
-    }
 
     #sidebarBtn {
         display: block;

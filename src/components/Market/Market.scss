@@ -9,9 +9,11 @@
     }
 
     table {
-        height: fit-content;
+        position: relative;
+        height: 100%;
         width: 100%;
-        // margin: 20px 0;
+        border: none;
+        padding: 5px 10px;
         background-color: var(--app-bgcolor-secondary);
 
         th {
@@ -20,9 +22,35 @@
         }
 
         tr {
-            height: 50px;
+            height: 60px;
             width: 100%;
             margin: 0 auto;
+
+            &:hover {
+                background-color: var(--app-bgcolor-secondary-hover);
+            }
+        }
+
+        td,
+        th {
+            text-align: left;
+            padding: 0 15px;
+        }
+
+        td {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        td > span {
+            font-size: 12px;
+            font-weight: 200;
+        }
+
+        thead {
+            tr:hover {
+                background-color: var(--app-bgcolor-secondary);
+            }
         }
     }
 }

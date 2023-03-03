@@ -1,6 +1,6 @@
 import { type } from '../actions/types';
 
-const formReducer = (state = {}, action) => {
+const formReducer = (state = {}, action: any) => {
     switch (action.type) {
         case type.FORM_UPDATE:
             return { ...state, [action.payload.name]: action.payload.value };

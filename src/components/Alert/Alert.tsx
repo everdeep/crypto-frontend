@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { alertClear } from "../../actions";
+import { alertClear } from "@src/actions";
 
 import "./Alert.scss";
 
@@ -9,7 +9,7 @@ interface AlertProps {
     alertClear: any;
     className?: string;
     message?: string;
-};
+}
 
 const Alert: React.FC<AlertProps> = ({ className, message, alertClear, alert }) => {
 

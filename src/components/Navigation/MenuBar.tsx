@@ -2,14 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Icon, Radio } from 'semantic-ui-react'
 
-import { icons } from '../App/Icons';
+import { icons } from '@src/components/App/Icons';
 
 interface MenuBarProps {
     handleLogout: () => void;
     toggleSidebar: () => void;
     toggleTheme: () => void;
     isDarkTheme: boolean;
-};
+}
 
 const MenuBar: React.FC<MenuBarProps> = ({ handleLogout, toggleSidebar, toggleTheme, isDarkTheme }) => {
 

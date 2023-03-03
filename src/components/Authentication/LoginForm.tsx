@@ -2,8 +2,8 @@ import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signIn, formUpdate, formClear, alertSet } from '../../actions';
-import { login } from '../../api/authService';
+import { signIn, formUpdate, formClear, alertSet } from '@src/actions';
+import { login } from '@src/api/authService';
 
 import './auth.scss';
 
@@ -31,6 +31,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
         .then((res: any) => {
             signIn(res.email, res.accessToken);
             formClear();
+            // Possibly add a navigate here
         }).catch((err: any) => {
             alertSet('The username or password is incorrect.', 'error');
         });

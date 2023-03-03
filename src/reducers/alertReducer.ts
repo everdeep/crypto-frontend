@@ -1,12 +1,12 @@
 import { type } from '../actions/types';
 
-const INITAL_STATE = {
+const INITAL_STATE: any = {
     active: false,
     message: '',
     className: '',
 };
 
-const alertReducer = (state = INITAL_STATE, action) => {
+const alertReducer = (state = INITAL_STATE, action: any) => {
     switch (action.type) {
         case type.ALERT:
             return {

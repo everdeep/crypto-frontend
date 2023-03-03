@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { formUpdate, formClear, alertSet } from '../../actions';
-import { useNavigate } from 'react-router-dom';
-import { register } from '../../api/authService';
-import { validateField } from '../../utils/validation';
+import { register } from '@src/api/authService';
+import { validateField } from '@src/utils/validation';
+import { formUpdate, formClear, alertSet } from '@src/actions';
 
 import './auth.scss'
 
@@ -14,7 +13,7 @@ interface RegisterFormProps {
     formUpdate: (name: string, value: string) => void;
     formClear: () => void;
     alertSet: (message: string, type: string) => void;
-};
+}
 
 const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear, alertSet}) => {
 

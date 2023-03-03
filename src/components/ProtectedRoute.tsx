@@ -3,7 +3,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setPage, signOut } from '../actions';
 import { type } from '../actions/types';
-import PropTypes from 'prop-types';
 
 interface ProtectedRouteProps {
     isSignedIn: boolean;

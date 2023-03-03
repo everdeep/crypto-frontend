@@ -1,6 +1,6 @@
 const minPasswordLength = 8;
 
-export const validateField = (fieldName, value, form) => {
+export const validateField = (fieldName: string, value: any, form: any) => {
     let isValid = true;
     let errorMessage = '';
     switch (fieldName) {
@@ -41,13 +41,4 @@ export const validateField = (fieldName, value, form) => {
     }
 
     return { isValid, errorMessage };
-};
-
-const validateForm = () => {
-    this.setState({
-        formValid:
-            this.state.usernameValid &&
-            this.state.emailValid &&
-            this.state.passwordValid,
-    });
 };

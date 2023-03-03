@@ -5,7 +5,7 @@ export const HEADERS = {
     Accept: 'application/json',
 };
 
-export const login = (username, password) => {
+export const login = async (username, password) => {
     return api.post(
         '/api/user/login',
         {
@@ -17,11 +17,11 @@ export const login = (username, password) => {
     );
 };
 
-export const logout = () => {
+export const logout = async () => {
     return api.get('/api/user/logout', { withCredentials: true });
 };
 
-export const register = (username, password, email) => {
+export const register = async (username, password, email) => {
     return api.post(
         '/api/user/register',
         {

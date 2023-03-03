@@ -2,13 +2,13 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './configureStore';
 import {
     QueryClient,
     QueryClientProvider,
-} from 'react-query'
+} from '@tanstack/react-query'
 
-import Application from './components/App';
+import { store, persistor } from '@src/configureStore';
+import Application from '@src/components/App';
 
 // Say something
 console.log('[ERWT] : Renderer execution started');

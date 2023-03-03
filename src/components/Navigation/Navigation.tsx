@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
 import { connect } from 'react-redux';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { signOut } from '@src/actions';
 import { logout } from '@src/api/authService';
 
@@ -14,7 +14,7 @@ interface NavigationProps {
     signOut: () => void;
     toggleTheme: () => void;
     isDarkTheme: boolean;
-};
+}
 
 const Navigation: React.FC<NavigationProps> = ({ signOut, toggleTheme, isDarkTheme }) => {
 
@@ -30,10 +30,10 @@ const Navigation: React.FC<NavigationProps> = ({ signOut, toggleTheme, isDarkThe
     }
     
     return (
-        <>
+        <div className="navbar">
             <MenuBar handleLogout={handleLogout} toggleSidebar={() => setSidebarOpen(!sidebarOpen)} toggleTheme={toggleTheme} isDarkTheme={isDarkTheme}/>
             <SideBar open={sidebarOpen} handleLogout={handleLogout} setSidebarOpen={setSidebarOpen} />
-        </>
+        </div>
     );
 }
 

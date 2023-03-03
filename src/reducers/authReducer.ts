@@ -1,12 +1,12 @@
 import { type } from '../actions/types';
 
-const INITAL_STATE = {
+const INITAL_STATE: any = {
     isSignedIn: false,
     userId: null,
     authToken: null,
 };
 
-const authReducer = (state = INITAL_STATE, action) => {
+const authReducer = (state = INITAL_STATE, action: any) => {
     switch (action.type) {
         case type.SIGN_IN:
             return {
