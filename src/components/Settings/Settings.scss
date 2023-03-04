@@ -1,24 +1,89 @@
+@import '@src/components/App/Theme.scss';
+
+
+
 .settings {
+    
+    position: relative;
+    left: 0;
     display: flex;
     flex-direction: row;
+    max-width: var(--app-content-max-width);
     width: 100%;
     height: 100%;
-    margin-top: 40px;
-    padding: 50px 250px;
+    padding: 50px 0;
+
+
+    > .settings__container {
+        position: relative;
+        left: 210px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: calc(100% - 210px);
+    }
+}
+
+.settings__content {
+
+    padding: 0 40px;
+    width: calc(100% - 210px);
+    height: 100%;
+
+    h1 {
+        align-items: left !important;
+    }
+
+    label {
+        font-size: 24px;
+        font-weight: 100;
+    }
 
     .content {
-        padding: 0 40px;
+        width: 100% !important;
+        align-items: left !important;
+    }
+    
+
+    #generalInfo, #activityLog {
+        margin-bottom: 20px;
+    }
+
+
+}
+
+.settings__column {
+    // position: relative;
+    width: 100%;
+    max-width: 220px;
+    height: 800px;
+    padding: 0 20px;
+    margin: 0 auto;
+    border-left: 1px solid var(--app-border-color);
+}
+
+@media (max-width: 960px) {
+    .settings__column {
+        display: none;
+    }
+
+    .settings__content {
+        width: calc(100% - 200px);
+    }
+
+}
+
+@media (max-width: 760px) {
+
+    .ui.secondary.vertical.pointing.menu {
+        display: none;
+    }
+
+    .settings__content {
         width: 100%;
-        height: 100%;
-        overflow: hidden;
-        overflow-y: auto;
+    }
 
-        h1 {
-            align-items: left !important;
-        }
-
-        > .container {
-            margin: -100px 0px;
-        }
+    .settings__container {
+        left: 0 !important;
     }
 }

@@ -91,10 +91,12 @@ button {
     &:hover {
         background: var(--button-hover-bgcolor);
     }
+
     &:active {
         background: var(--button-active-bgcolor);
     }
-    & > span {
+
+    &>span {
         color: var(--button-badge-color);
         background-color: var(--button-badge-bgcolor);
         font-size: 12px;
@@ -167,11 +169,34 @@ button {
         max-width: 700px;
         margin: 0 auto;
     }
+
     .footer {
         margin-top: 1rem;
         padding: 2rem;
         background: var(--app-footer-bgColor);
     }
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 45px;
+}
+
+.content {
+    margin: 10px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background: var(--app-bgcolor-secondary);
+}
+
+input[type=date] {
+    max-width: 143px;
 }
 
 // ==============================
@@ -189,29 +214,137 @@ button {
 // ==============================
 // Semantic UI Globals
 // ==============================
-.ui.divider {
+// .ui {
+//     h1, h2, h3, h4, h5, h6, p, div, span {
+//         font-family: var(--app-font-family) !important;
+//         color: var(--app-color) !important;
+//     }
+// }
+
+.ui .divider {
     border-color: var(--ui-divider-color) !important;
 }
 
-.ui.container {
-    width: 100% !important;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0;
-    top: auto;
-    background-color: var(--app-bgcolor);
-}
-
-.ui.container.content {
-    max-width: 1420px !important;
-    margin-top: 100px !important;
-    flex-grow: 0 !important;
-    position: absolute !important;
-}
-
 .ui.menu {
-    z-index: 1000 !important;
     margin: 0 auto !important;
     border: none !important;
     flex: 1 1 auto !important;
+
+    .item {
+        color: var(--app-color) !important;
+    }
+}
+
+// UI Dropdown Menu
+.ui.menu .ui.dropdown .menu  {
+
+    color: var(--app-color) !important;
+    background:  var(--app-bgcolor-secondary) !important;
+
+    >.item {
+        padding: 0.8rem 0.5rem !important;
+        &:hover {
+            background: var(--app-bgcolor-secondary-hover) !important;
+        }
+    }
+
+    >.divider {
+        margin: 0.5rem 0 !important;
+    }
+}
+
+.ui.form input {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+// Transparent form design
+div.ui.input.transparent.form {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: fit-content !important;
+
+
+    button.ui.button {
+        position: absolute;
+        max-width: 100px;
+        right: 0;
+        margin: 5px 20px;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=number],
+    input[type=search],
+    input[type=tel],
+    input[type=time],
+    input[type=url],
+    input[type=date] {
+        height: 40px;
+        border-bottom: 1px solid var(--app-border-color) !important;
+        padding: 0 10px !important;
+        margin: 5px 0;
+        color: var(--app-color) !important;
+        background: none !important;
+
+        &:focus {
+            border-bottom: 1px solid var(--selection-border-color) !important;
+        }
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.3) !important;
+        }
+    }
+}
+
+// Sidebar menu
+// .ui.visible.left.overlay.sidebar {
+//     z-index: 1001 !important;
+// }
+
+// Vertical Menu design
+.ui.secondary.vertical.pointing.menu {
+
+    position: fixed;
+    
+    .item {
+        color: var(--app-color) !important;
+        border-radius: 0 !important;
+        padding: 1rem 1rem !important;
+        font-size: medium;
+
+        &:focus {
+            color: var(--selection-color) !important;
+            font-weight: 400 !important;
+
+        }
+    }
+}
+
+.ui.vertical.menu .active.item {
+    background: var(--selection-bgcolor) !important;
+
+}
+
+.active.item {
+    border-color: var(--selection-border-color) !important;
+    border-width: 3px !important;
+}
+
+.ui.vertically.divided.grid {
+    padding: 15px 0;
+}
+
+.ui .row {
+    height: 60px;
+    
+    .column {
+        margin: 0 !important;
+    }
 }

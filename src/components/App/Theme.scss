@@ -17,14 +17,20 @@
 
 :root {
     // Application
-    --app-accent-color: #32639f;
+    --app-accent-color: rgb(56, 125, 210, 0.1);
+    --app-accent-color-hover: #3a8ee6;
+    --app-accent-border-color: #387dd2;
     --app-font-size: 16px;
     --app-font-family: "Source Sans Pro", sans-serif;
     --app-bgcolor: #202020;
+    --app-bgcolor-hover: #2f2f2f;
     --app-bgcolor-secondary: #111;
     --app-bgcolor-secondary-hover: #222;
     --app-border-color: #3b3f44;
-    --app-color: rgba(255,255,255,.7);
+    --app-hover-color: rgba(255, 255, 255, 0.5);
+    --app-placeholder-color: rgba(255, 255, 255, 0.3);
+    --app-color: rgba(255, 255, 255, 0.7);
+    --app-content-max-width: 1420px;
 
     // Scrollbar
     --scroll-width: 5px;
@@ -35,7 +41,14 @@
 
     // Selection
     --selection-bgcolor: var(--app-accent-color);
+    --selection-border-color: var(--app-accent-border-color);
     --selection-color: #fff;
+
+    // Input
+    --input-color: var(--app-color);
+    --input-border-color: var(--app-border-color);
+    --input-hover-color: var(--app-hover-color);
+    --input-placeholder-color: rgba(255, 255, 255, 0.5)
 
     // Button
     --button-color: #fff;
@@ -79,11 +92,6 @@
     // ================================
     // Semantic UI components
     // ================================
-    --ui-bgcolor: #262626;
-    --ui-color: #dddddd;
-    --ui-border-color: #3b3f44;
-    --ui-accent-color: #32639f;
-    --ui-accent-color-hover: #2f77ca;
 
     // Divider
     --ui-divider-color: #3b3f44;

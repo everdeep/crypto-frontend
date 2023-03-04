@@ -45,7 +45,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ handleLogout, toggleSidebar, toggleTh
                         <Dropdown.Menu>
                             <h3>User name</h3>
                             <p>user@gmail.com</p>
-                            <div>Notice message</div>
+                            <p>Notice message</p>
                             <Dropdown.Divider />
                             <Dropdown.Item as={NavLink} to='/settings/user'>
                                 <div>

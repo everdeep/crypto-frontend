@@ -8,8 +8,8 @@ import {
 import CSS from 'csstype';
 
 // SCSS
-import './Application.scss';
 import 'semantic-ui-css/semantic.min.css'
+import './Application.scss';
 
 import { alertClear } from '@src/actions';
 import ProtectedRoute from '@src/components/ProtectedRoute';
@@ -129,38 +129,40 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                 </Transition>
             )}
 
-            <Routes>
-                <Route element={<ProtectedRoute isSignedIn={!isSignedIn} redirectPath='/' />} >
-                    <Route path='welcome' element={<Welcome />} />
-                    <Route path='login' element={<LoginForm />} />
-                    <Route path='register' element={<RegisterForm />} />
-                    <Route path='reset-password' element={<ResetPassword />} />
-                </Route>
-                
-                <Route element={<ProtectedRoute isSignedIn={isSignedIn} />} >
-                    <Route index element={<Dashboard />} />
-                    <Route path='portfolio' element={<Portfolio />} />
-                    <Route path='terminal' element={<Terminal />} />
-                    <Route path='market' element={<Market />} />
-                    <Route path='news' element={<News />} />
-                    <Route path='settings' element={<Settings />}>
-                        <Route index element={<ProfileDetails />} />
-                        <Route path='user' element={<ProfileDetails />} />
-                        <Route path='verification' element={<Verification />} />
-                        <Route path='preferences' element={<Preferences />} />
-                        <Route path='password' element={<Password />} />
-                        <Route path='security' element={<Security />} />
-                        <Route path='accounts' element={<Accounts />} />
-                        <Route path='referrals' element={<Referrals />} />
-                        <Route path="*" element={<Navigate to="/error" replace />} />
+            <div className='main'>
+                <Routes>
+                    <Route element={<ProtectedRoute isSignedIn={!isSignedIn} redirectPath='/' />} >
+                        <Route path='welcome' element={<Welcome />} />
+                        <Route path='login' element={<LoginForm />} />
+                        <Route path='register' element={<RegisterForm />} />
+                        <Route path='reset-password' element={<ResetPassword />} />
                     </Route>
                     
+                    <Route element={<ProtectedRoute isSignedIn={isSignedIn} />} >
+                        <Route index element={<Dashboard />} />
+                        <Route path='portfolio' element={<Portfolio />} />
+                        <Route path='terminal' element={<Terminal />} />
+                        <Route path='market' element={<Market />} />
+                        <Route path='news' element={<News />} />
+                        <Route path='settings' element={<Settings />}>
+                            <Route index element={<ProfileDetails />} />
+                            <Route path='user' element={<ProfileDetails />} />
+                            <Route path='verification' element={<Verification />} />
+                            <Route path='preferences' element={<Preferences />} />
+                            <Route path='password' element={<Password />} />
+                            <Route path='security' element={<Security />} />
+                            <Route path='accounts' element={<Accounts />} />
+                            <Route path='referrals' element={<Referrals />} />
+                            <Route path="*" element={<Navigate to="/error" replace />} />
+                        </Route>
+                        
 
-                </Route>
+                    </Route>
 
-                <Route path="error" element={<NotFound setNotFound={setNotFound}/>} />
-                <Route path="*" element={<Navigate to="/error" replace />} />
-            </Routes>
+                    <Route path="error" element={<NotFound setNotFound={setNotFound}/>} />
+                    <Route path="*" element={<Navigate to="/error" replace />} />
+                </Routes>
+            </div>
         </BrowserRouter>
     );
 };

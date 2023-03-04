@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Container } from 'semantic-ui-react';
-
 const Preferences: React.FC = () => {
     return (
-        <Container>
+        <div className='settings__content'>
             <h1>Preferences</h1>
-        </Container>
+            <div className='content'>
+                <label>Preferences</label>
+                Details
+            </div>
+        </div>
     );
 }
 

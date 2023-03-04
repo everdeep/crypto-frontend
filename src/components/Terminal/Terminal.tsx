@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { Container } from 'semantic-ui-react';
+import './Terminal.scss';
 
 const Terminal: React.FC = () => {
 
     return (
-        <Container className='content'>
-            <div className='header'>
-                <h1>Terminal</h1>
-            </div>
-            <div className='body'>
-            </div>
-        </Container>
+        <div className='terminal'>
+            <div className="item item-a">a</div>
+            <div className="item item-b">b</div>
+            <div className="item item-c">c</div>
+        </div>
     );
 }
 

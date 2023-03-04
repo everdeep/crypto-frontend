@@ -96,29 +96,3 @@ ____________________________________________ */
     line-height: 1.5;
     padding: 15px 10px;
 }
-
-/* MQ
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-@media screen and (min-width: 600px) {
-    .form .grid {
-        display: grid;
-        grid-gap: 1.5rem;
-    }
-
-    .form .grid-2 {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .form .grid-3 {
-        grid-template-columns: auto auto auto;
-        align-items: center;
-    }
-
-    .form .field > *:not(:last-child) {
-        margin-bottom: 0;
-    }
-
-    .form .required-msg {
-        display: block;
-    }
-}

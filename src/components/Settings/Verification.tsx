@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { Container } from 'semantic-ui-react';
 
 const Verification: React.FC = () => {
     return (
-        <Container>
+        <div className='settings__content'>
             <h1>Verification</h1>
-        </Container>
+            <div className='content'>
+                <label>Verification</label>
+                Details
+            </div>
+        </div>
     );
 }
 

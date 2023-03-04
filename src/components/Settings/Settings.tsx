@@ -46,7 +46,15 @@ const Settings: React.FC = () => {
                 />
             </Menu>
 
-            <Outlet />
+            <div className='settings__container'>
+                <Outlet />
+
+                <div className='settings__column'>
+                    <div className='settings__column__content'>
+                        here is some content
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

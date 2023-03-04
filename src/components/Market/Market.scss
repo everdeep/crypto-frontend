@@ -1,6 +1,10 @@
 @import '../App/Theme.scss';
 
-.content {
+.market {
+    width: 100%;
+    max-width: var(--app-content-max-width);
+    background-color: var(--app-bgcolor);
+
     .header {
         height: 80px;
         width: 100%;

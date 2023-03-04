@@ -70,7 +70,7 @@ const Market: React.FC = () => {
     }
 
     return (
-        <Container className='content'>
+        <div className='market'>
             <div className='header'>
             </div>
             <table cellSpacing={0}>
@@ -139,7 +139,7 @@ const Market: React.FC = () => {
                 </tbody>
 
             </table>
-        </Container>
+        </div>
     );
 }
 

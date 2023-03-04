@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Container } from 'semantic-ui-react';
-
 const Security: React.FC = () => {
     return (
-        <Container>
+        <div className='settings__content'>
             <h1>Security</h1>
-        </Container>
+            <div className='content'>
+                <label>Enable 2-Factor Authentication</label>
+                Details
+            </div>
+        </div>
     );
 }
 
