@@ -17,7 +17,7 @@
 
 :root {
     // Application
-    --app-accent-color: rgb(56, 125, 210, 0.1);
+    --app-accent-color: #387dd2;
     --app-accent-color-hover: #3a8ee6;
     --app-accent-border-color: #387dd2;
     --app-font-size: 16px;
@@ -40,9 +40,12 @@
     --scroll-thumb-hover-bgcolor: #555;
 
     // Selection
-    --selection-bgcolor: var(--app-accent-color);
+    --selection-bgcolor: rgb(56, 125, 210, 0.1);
     --selection-border-color: var(--app-accent-border-color);
     --selection-color: #fff;
+
+    // Links
+    --link-color: var(--app-accent-color);
 
     // Input
     --input-color: var(--app-color);
@@ -79,15 +82,11 @@
     --titlebar-popup-item-hover-shortcut-color: var(--app-accent-color);
     --titlebar-popup-item-name-shadow-color: #151515;
 
-    // ERWT
-    --erwt-bgcolor: #262626;
-    --erwt-heading-color: #dddddd;
-
     // ================================
     // Colors
     // ================================
     --color-green: #31e66e;
-    --color-red: rgb(248, 70, 70);
+    --color-red: #f84646;
 
     // ================================
     // Semantic UI components

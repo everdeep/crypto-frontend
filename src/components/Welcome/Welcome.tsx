@@ -9,17 +9,16 @@ const Welcome = () => {
     const navigate = useNavigate();
 
     return (
-        <div id='erwt'>
-            <div className='header'>
+        <div className='__container'>
+            <div className='__header'>
                 <div className='main-heading'>
                     <h1 className='themed'><b>Welcome</b> to the Crypto Trading App</h1>
                 </div>
-                <p>
-                    Please login or register to continue
-                </p>
             </div>
-
-            <div className='footer'>
+            <div className='__body'>
+                Please login or register to continue
+            </div>
+            <div className='__footer'>
                 <div className='center'>
                     <Button onClick={(e) => navigate('/login')}>
                         Login

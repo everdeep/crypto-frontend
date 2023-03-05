@@ -32,27 +32,29 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({form, formUpdate, formClea
     }
 
     return (
-        <div id='erwt'>
-            <div className='header'>
+        <div className='__container'>
+            <div className='__header'>
                 <div className='main-heading'>
                     <h1>Reset password</h1>
                 </div>
             </div>
-            <div className='ui form'>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Input
-                        fluid label='Username'
-                        type='text'
-                        placeholder='Username'
-                        name='username'
-                        maxLength={60}
-                        value={form.username ? form.username : ''}
-                        onChange={(e) => handleUserInput(e)}
-                    />
-                    <Form.Button type='submit'>Reset</Form.Button>
-                </Form>
+            <div className='__body'>
+                <div className='ui input transparent form'>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Input
+                            fluid
+                            type='text'
+                            placeholder='Username'
+                            name='username'
+                            maxLength={60}
+                            value={form.username ? form.username : ''}
+                            onChange={(e) => handleUserInput(e)}
+                        />
+                        <Form.Button type='submit'>Reset</Form.Button>
+                    </Form>
+                </div>
             </div>
-            <div className='footer'>
+            <div className='__footer'>
                 <div className='center'>
                     <Link to='/login' onClick={() => formClear()}><u>Back to login</u></Link>
                 </div>

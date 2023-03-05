@@ -3,75 +3,13 @@
     color: rgb(41, 41, 63) !important;
 }
 
-.container {
-    position: relative;
-    top: 10%;
-    display: flex;
-    max-width: 400px;
-    max-height: fit-content;
-    margin: 0 auto;
-    align-items: center;
-    text-align: center;
-    padding: 20px 0;
-    /* height: 400px; */
-    /* border: 3px solid green; */
-    border-radius: 5px;
-    background-color: #111;
-}
-
-.ui.form {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    /* border: 3px solid red; */
-}
-
-.form .field label {
-    color: aliceblue !important;
-    text-align: left !important;
-    margin-left: 15px;
-}
-
-.form .error-label {
-    text-align: left !important;
-    float: left !important;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    padding-left: 0 !important;
-    font-size: 12px;
-    font-weight: 600;
-    color: rgb(210, 45, 45);
-}
 
 .form .error .checkbox label {
     color: red !important;
 }
 
-.form .field input {
-    background-color: #222831 !important;
-    color: aliceblue !important;
-    border: 1px solid #222831 !important;
-    border-radius: 5px !important;
-    padding: 10px 15px !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    text-align: left !important;
-    /* margin-left: 15px;*/
-}
 
-/* Add asterisk to input field */
-.form .field input:required {
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);
-    background-position: right 10px center;
-    background-repeat: no-repeat;
-    background-size: 13px 13px;
-}
 
-/* Scale input on focus */
-.form .field input:focus {
-    transform: scale(1.02);
-    transition: all 0.2s ease-in-out;
-}
 
 /* Custom CSS
 _________________________________________________ */
@@ -82,17 +20,5 @@ _________________________________________________ */
     opacity: 1;
 }
 
-.form *:disabled {
-    cursor: default;
-    filter: blur(2px);
-}
-
 /* Form buttons 
 ____________________________________________ */
-
-.form button {
-    font-weight: bold;
-    width: 100%;
-    line-height: 1.5;
-    padding: 15px 10px;
-}
