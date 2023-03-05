@@ -18,7 +18,6 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
             animation='overlay'
             icon='labeled'
             borderless
-            inverted
             onHide={() => setSidebarOpen(false)}
             vertical
             visible={open}

@@ -18,8 +18,13 @@
  */
 
 ::selection {
-    background: var(--selection-bgcolor);
-    color: var(--selection-color);
+    background: var(--selection-bgcolor) !important;
+    color: var(--selection-color) !important;
+}
+
+::-moz-selection {
+    background: var(--selection-bgcolor) !important;
+    color: var(--selection-color) !important;
 }
 
 ::-webkit-scrollbar {
@@ -206,183 +211,316 @@ input:-webkit-autofill:active {
 //     }
 // }
 
-.ui .divider {
-    border-color: var(--ui-divider-color) !important;
-}
+.ui {
 
-.ui .checkbox {
-    margin-bottom: 1rem;
-}
+    .divider {
+        border-color: var(--ui-divider-color) !important;
+        margin: 1rem 1rem !important;
 
-.ui.menu {
-    margin: 0 auto !important;
-    border: none !important;
-    flex: 1 1 auto !important;
-
-    .item {
-        color: var(--app-color) !important;
     }
-}
 
-// UI Dropdown Menu
-.ui.menu .ui.dropdown .menu  {
-
-    color: var(--app-color) !important;
-    background:  var(--app-bgcolor-secondary) !important;
-
-    >.item {
-        padding: 0.8rem 0.5rem !important;
-        &:hover {
-            background: var(--app-bgcolor-secondary-hover) !important;
+    &.checkbox {
+        margin-bottom: 1rem;
+    
+        label {
+            color: var(--app-color) !important;
         }
     }
 
-    >.divider {
-        margin: 0.5rem 0 !important;
-    }
-}
+    // ==============================
+    // Menu
+    // ==============================
+    &.menu {
+        margin: 0 auto !important;
+        border: none !important;
+        flex: 1 1 auto !important;
 
-// Transparent form design
-div.ui.input.transparent.form {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0 auto;
+        svg {
+            fill: var(--app-color);
+            height: 21px;
+            width: 21px;
 
-    input[type=text],
-    input[type=password],
-    input[type=email],
-    input[type=number],
-    input[type=search],
-    input[type=tel],
-    input[type=time],
-    input[type=url],
-    input[type=date] {
-        height: 40px;
-        border-bottom: 1px solid var(--app-border-color) !important;
-        padding: 0 10px !important;
-        margin: 5px 0;
-        color: var(--app-color) !important;
-        background: none;
-    }
-}
-
-// Sidebar menu
-// .ui.visible.left.overlay.sidebar {
-//     z-index: 1001 !important;
-// }
-
-// Vertical Menu design
-.ui.secondary.vertical.pointing.menu {
-
-    position: fixed;
-    
-    .item {
-        color: var(--app-color) !important;
-        border-radius: 0 !important;
-        padding: 1rem 1rem !important;
-        font-size: medium;
-
-        &:focus {
-            color: var(--selection-color) !important;
-            font-weight: 400 !important;
-
-        }
-    }
-}
-
-.ui.vertical.menu .active.item {
-    background: var(--selection-bgcolor) !important;
-
-}
-
-.active.item {
-    border-color: var(--selection-border-color) !important;
-    border-width: 3px !important;
-}
-
-.ui.vertically.divided.grid {
-    padding: 15px 0;
-}
-
-.ui .row {
-    height: 60px;
-    
-    .column {
-        margin: 0 !important;
-    }
-}
-
-// Forms
-.ui.form {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-
-    *:disabled {
-        cursor: default;
-        filter: blur(2px);
-    }
-
-    button {
-        // font-weight: bold;
-        width: 100%;
-        padding: 15px 10px;
-    }
-
-    .error-label {
-        text-align: left !important;
-        float: left !important;
-        margin-top: -10px;
-        margin-bottom: 5px;
-        padding-left: 0 !important;
-        font-size: 12px;
-        font-weight: 600;
-        color: rgb(210, 45, 45);
-    }
-
-    .field {
-
-        input {
-            border: none !important;
-            border-radius: 0 !important;
-    
-            /* Add asterisk to input field */
-            &:required {
-                // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg) !important;
-                background-image: url(../../../assets/icons/24/asterisk-red.png) !important;
-                background-position: right 10px center !important;
-                background-repeat: no-repeat !important;
-                background-size: 13px 13px !important;
+            &:hover {
+                cursor: pointer;
+                fill: var(--app-accent-color-hover);
             }
-    
-            /* Scale input on focus */
-            &:focus {
-                transform: scale(1.01);
-                transition: all 0.1s ease-in-out;
-            }
-    
         }
 
-        &.field input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary) inset !important;
-            border-color: var(--app-border-color) !important;
-            color: var(--input-color) !important;
-        
-            &:focus {
-                -webkit-box-shadow: var(--app-bgcolor-secondary) !important;
-                -webkit-text-fill-color: #000 !important;
-                background: var(--app-bgcolor-secondary) !important;
+        #sideBarBtn > i.icon {
+            // filter: var(--app-icon-filter);
+            height: 21px !important;
+            width: 21px !important;
+            // content: url(../../../assets/icons/24/menu.png);
+        }
+    
+        .item {
+            color: var(--app-color) !important;
+
+            &.active {
+                background: var(--selection-bgcolor) !important;
+                border-color: var(--selection-border-color) !important;
+                border-width: 3px !important;
             }
 
             &:hover {
-                color: rgba(255, 255, 255, 0.5) !important;
+                color: var(--app-accent-color-hover) !important;
             }
+        }
+
+        // UI Dropdown Menu
+        .ui.dropdown {
+
+            i.icon {
+                font-size: 1.5em !important;
+            }
+
+            >.menu  {
+                // padding: 10px 10px !important;
+                color: var(--app-color) !important;
+                background:  var(--app-bgcolor-secondary) !important;
+            
+                .item {
+                    padding: 0.8rem 0.7rem !important;
+                    color: var(--app-color) !important;
+
+
+                    &.info {
+                        &:hover {
+                            color: var(--app-color) !important;
+                            background: none !important;
+                            cursor: default !important;
+                        }
+                    }
+
+                    > div {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+    
+                        > img {
+                            filter: var(--app-icon-filter);
+                            width: 24px;
+                            height: 24px;
+                            object-fit: cover;
+                        }
+                    }
+
+                    &:hover {
+                        background: var(--app-bgcolor-secondary-hover) !important;
+                    }
+                }
+
+                span {
+                    font-size: 14px;
+                    padding: 0 20px;
+                    color: var(--app-color);
+                }
+
+            }
+        }
+
+        // Sidebar
+        &.sidebar {
+
+            .item {
+
+                > div {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    > img {
+                        filter: var(--app-icon-filter);
+                        width: 24px;
+                        height: 24px;
+                        object-fit: cover;
+                    }
+                }
+
+            }
+
+            span {
+                font-size: 16px;
+                padding: 0 20px;
+                color: var(--app-color);
+            }
+        }
+
+        // Vertical menu
+        &.vertical {
+
+            background: var(--app-bgcolor-secondary);
         
-            &::placeholder {
-                color: rgba(255, 255, 255, 0.3) !important;
+            .item {
+                color: var(--app-color);
+                border-radius: 0;
+                padding: 1rem 1rem;
+                font-size: medium;
+        
+                &:focus {
+                    color: var(--selection-color);
+                    font-weight: 400;
+                }
+        
+                &:hover {
+                    background: var(--app-bgcolor-secondary-hover);
+                }
+            }
+
+            // Secondary design
+            &.pointing.secondary {
+
+                position: fixed;
+                background: none;
+                
+                .item {
+                    color: var(--app-color);
+                    border-radius: 0;
+                    padding: 1rem 1rem;
+                    font-size: medium;
+            
+                    &.active:focus {
+                        color: var(--selection-color);
+                        font-weight: 400 !important;
+            
+                    }
+
+                    &:hover {
+                        color: var(--app-accent-color-hover) !important;
+                    }
+                }
             }
         }
     }
 
+    // ==============================
+    // Forms
+    // ==============================
+
+    &.form {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+
+        ::placeholder {
+            color: inherit;
+            /*Fix opacity issue on Firefox*/
+            opacity: 1;
+        }
+    
+        *:disabled {
+            cursor: default;
+            filter: blur(2px);
+        }
+    
+        button {
+            // font-weight: bold;
+            width: 100%;
+            padding: 15px 10px;
+        }
+    
+        input[type] {
+            border: none;
+            border-radius: 0;
+    
+            &:focus {
+                border: none;
+                border-radius: 0;
+            }
+        }
+    
+        .error-label {
+            text-align: left !important;
+            float: left !important;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            padding-left: 0 !important;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgb(210, 45, 45);
+        }
+    
+        .field {
+
+            > .input {
+                font-size: medium;
+
+                &.transparent input {
+                    background: none;
+                    border: none;
+                }
+
+                input[type] {
+                    
+                    height: 40px;
+                    padding: 0 10px !important;
+                    color: var(--input-color) !important;
+                    border-bottom: 1px solid var(--app-border-color) !important;
+                    // background: none;
+            
+                    /* Add asterisk to required input fields */
+                    &:required {
+                        background-image: url(../../../assets/icons/24/asterisk-red.png);
+                        background-position: right 10px center;
+                        background-repeat: no-repeat;
+                        background-size: 13px 13px;
+                    }
+            
+                    /* Scale input on focus */
+                    &:focus {
+                        color: var(--selection-color) !important;
+                        transform: scale(1.01);
+                        transition: all 0.1s ease-in-out;
+                        border-bottom: 1px solid var(--selection-border-color) !important;
+                    }
+    
+                    &:disabled {
+                        cursor: default;
+                        filter: blur(2px);
+                    }
+    
+                    &:hover {
+   
+                    }
+                }
+            }
+    
+    
+            &.field input:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary) inset !important;
+                border-color: var(--app-border-color) !important;
+            
+                &:focus {
+                    -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary) inset !important;
+                    -webkit-text-fill-color: var(--selection-color) !important;
+                }
+
+            }
+        }
+    
+    }
+
+    // ==============================
+    // Grid
+    // ==============================
+    
+    &.grid {
+        &.vertically.divided {
+            padding: 15px 0;
+        
+            .row {
+                border: none;
+                padding: 5px !important;
+        
+                
+                .column {
+                    margin: 0 !important;
+                }
+        
+                &::before {
+                    content: none;
+                }
+            }
+        }
+    }
 }

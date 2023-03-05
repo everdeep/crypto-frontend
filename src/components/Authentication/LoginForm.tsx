@@ -46,7 +46,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
                 </div>
             </div>
             <div className='__body'>
-                <div className='ui input transparent form'>
+                {/* <div className='ui'> */}
                     <Form onSubmit={handleSubmit}>
                         <Form.Input
                             fluid
@@ -54,6 +54,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
                             placeholder='Username'
                             name='username'
                             maxLength={60}
+                            transparent
                             value={form.username ? form.username : ''}
                             onChange={(e) => handleUserInput(e)}
                         />
@@ -63,12 +64,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
                             placeholder='Password'
                             name='password'
                             maxLength={60}
+                            transparent
                             value={form.password ? form.password : ''}
                             onChange={(e) => handleUserInput(e)}
                         />
                         <Form.Button type='submit'>Login</Form.Button>
                     </Form>
-                </div>
+                {/* </div> */}
             </div>
            
             <div className='__footer'>

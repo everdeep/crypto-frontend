@@ -3,6 +3,10 @@ const minPasswordLength = 8;
 export const validateField = (fieldName: string, value: any, form: any) => {
     let isValid = true;
     let errorMessage = '';
+    if (!value) {
+        return { isValid, errorMessage: 'This field is required' };
+    }
+    
     switch (fieldName) {
         case 'username':
             if (value.length < 3) {

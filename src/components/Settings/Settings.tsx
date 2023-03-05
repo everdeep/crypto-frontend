@@ -8,7 +8,7 @@ const Settings: React.FC = () => {
 
     return (
         <div className='settings'>
-            <Menu inverted pointing secondary vertical>
+            <Menu pointing secondary vertical>
                 <Menu.Item
                     as={NavLink}
                     to='user'

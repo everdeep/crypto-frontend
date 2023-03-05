@@ -91,78 +91,80 @@ const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear,
                         </div>
                     </div>
                     <div className='__body'>
-                        <div className='ui input transparent form'>
-                            <Form onSubmit={handleSubmit}>
-                                <Form.Input fluid
-                                    type='text'
-                                    placeholder='Username'
-                                    name='username'
-                                    required={true}
-                                    maxLength={60}
-                                    value={form.username ? form.username : ''}
-                                    onChange={(e) => handleUserInput(e)}
-                                    onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
-                                />
-                                {!fieldValid.username && <span className='error-label'>{formErrors.username}</span>}
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Input fluid
+                                type='text'
+                                placeholder='Username'
+                                name='username'
+                                required={true}
+                                maxLength={60}
+                                transparent
+                                value={form.username ? form.username : ''}
+                                onChange={(e) => handleUserInput(e)}
+                                onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
+                            />
+                            {!fieldValid.username && <span className='error-label'>{formErrors.username}</span>}
 
-                                <Form.Input
-                                    fluid
-                                    type='text'
-                                    placeholder='Email'
-                                    name='email'
-                                    required={true}
-                                    maxLength={60}
-                                    value={form.email ? form.email : ''}
-                                    onChange={(e) => handleUserInput(e)}
-                                    onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
-                                />
-                                {!fieldValid.email && <span className='error-label'>{formErrors.email}</span>}
+                            <Form.Input
+                                fluid
+                                type='text'
+                                placeholder='Email'
+                                name='email'
+                                required={true}
+                                maxLength={60}
+                                transparent
+                                value={form.email ? form.email : ''}
+                                onChange={(e) => handleUserInput(e)}
+                                onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
+                            />
+                            {!fieldValid.email && <span className='error-label'>{formErrors.email}</span>}
 
-                                <Form.Input
-                                    fluid
-                                    type='password'
-                                    placeholder='Password'
-                                    name='password'
-                                    required={true}
-                                    maxLength={60}
-                                    value={form.password ? form.password : ''}
-                                    onChange={(e) => handleUserInput(e)}
-                                    onBlur={(e: any) => {
-                                        handleValidation(e.target.name, e.target.value);
-                                        if (form.confirmPassword) {
-                                            handleValidation('confirmPassword', form.confirmPassword);
-                                        }
-                                    }}
-                                />
-                                {!fieldValid.password && <span className='error-label'>{formErrors.password}</span>}
+                            <Form.Input
+                                fluid
+                                type='password'
+                                placeholder='Password'
+                                name='password'
+                                required={true}
+                                maxLength={60}
+                                transparent
+                                value={form.password ? form.password : ''}
+                                onChange={(e) => handleUserInput(e)}
+                                onBlur={(e: any) => {
+                                    handleValidation(e.target.name, e.target.value);
+                                    if (form.confirmPassword) {
+                                        handleValidation('confirmPassword', form.confirmPassword);
+                                    }
+                                }}
+                            />
+                            {!fieldValid.password && <span className='error-label'>{formErrors.password}</span>}
 
-                                <Form.Input
-                                    fluid
-                                    type='password'
-                                    placeholder='Confirm Password'
-                                    name='confirmPassword'
-                                    required={true}
-                                    maxLength={60}
-                                    value={form.confirmPassword ? form.confirmPassword : ''}
-                                    onChange={(e) => handleUserInput(e)}
-                                    onBlur={(e: any) => {
-                                        handleValidation(e.target.name, e.target.value);
-                                        if (form.password) {
-                                            handleValidation('password', form.password);
-                                        }
-                                    }}
-                                />
-                                {!fieldValid.confirmPassword && <span className='error-label'>{formErrors.confirmPassword}</span>}
+                            <Form.Input
+                                fluid
+                                type='password'
+                                placeholder='Confirm Password'
+                                name='confirmPassword'
+                                required={true}
+                                maxLength={60}
+                                transparent
+                                value={form.confirmPassword ? form.confirmPassword : ''}
+                                onChange={(e) => handleUserInput(e)}
+                                onBlur={(e: any) => {
+                                    handleValidation(e.target.name, e.target.value);
+                                    if (form.password) {
+                                        handleValidation('password', form.password);
+                                    }
+                                }}
+                            />
+                            {!fieldValid.confirmPassword && <span className='error-label'>{formErrors.confirmPassword}</span>}
 
-                                <Form.Checkbox
-                                    label='I agree to the Terms and Conditions'
-                                    required={true}
-                                    checked={termsAndConditions}
-                                    onChange={() => setTermsAndConditions(!termsAndConditions)}
-                                />
-                                <Form.Button type='submit' disabled={!formValid || !termsAndConditions}>Register</Form.Button>
-                            </Form>
-                        </div>
+                            <Form.Checkbox
+                                label='I agree to the Terms and Conditions'
+                                required={true}
+                                checked={termsAndConditions}
+                                onChange={() => setTermsAndConditions(!termsAndConditions)}
+                            />
+                            <Form.Button type='submit' disabled={!formValid || !termsAndConditions}>Register</Form.Button>
+                        </Form>
                     </div>
                     
                     <div className='__footer'>
