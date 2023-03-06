@@ -4,7 +4,7 @@ export const validateField = (fieldName: string, value: any, form: any) => {
     let isValid = true;
     let errorMessage = '';
     if (!value) {
-        return { isValid, errorMessage: 'This field is required' };
+        return { isValid, errorMessage: '' };
     }
     
     switch (fieldName) {

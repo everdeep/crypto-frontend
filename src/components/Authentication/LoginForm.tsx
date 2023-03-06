@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { useGoogleLogin } from '@react-oauth/google';
 import { signIn, formUpdate, formClear, alertSet } from '@src/actions';
 import { login, loginGoogle } from '@src/api/authService';
+import { Password } from '@src/components/Input';
+import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
 
 import './auth.scss';
 
@@ -14,9 +16,10 @@ interface LoginFormProps {
     formUpdate: (name: string, value: string) => void;
     formClear: () => void;
     alertSet: (message: string, type: string) => void;
+    appContext: AppContextInterface;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formClear, alertSet }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formClear, alertSet, appContext }) => {
 
     const handleUserInput = (e: any) => {
         const name = e.target.name;
@@ -26,35 +29,39 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        appContext.setLoading(true);
 
         // Submit
         login(form.username, form.password)
         .then((res: any) => {
             signIn(res.data);
             formClear();
+            appContext.setLoading(false);
         }).catch((err: any) => {
             alertSet('The username or password is incorrect.', 'error');
+            appContext.setLoading(false);
         });
     }
 
     const googleLogin = useGoogleLogin({
         onSuccess: codeResponse => {
-            console.log(codeResponse);
+            appContext.setLoading(true);
             // signIn
             loginGoogle(codeResponse.code)
             .then((res: any) => {
                 signIn(res.data);
                 formClear();
-                // Possibly add a navigate here
+                appContext.setLoading(false);
             }).catch((err: any) => {
                 alertSet('The username or password is incorrect.', 'error');
+                appContext.setLoading(false);
             });
         },
         flow: 'auth-code',
     });
     
     return (
-        <div className='__container'>
+        <div className='login __container'>
             <div className='__header'>
                 <div className='main-heading'>
                     <h1>Login</h1>
@@ -72,16 +79,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
                         value={form.username ? form.username : ''}
                         onChange={(e) => handleUserInput(e)}
                     />
-                    <Form.Input
-                        fluid
-                        type='password'
-                        placeholder='Password'
-                        name='password'
-                        maxLength={60}
-                        transparent
-                        value={form.password ? form.password : ''}
-                        onChange={(e) => handleUserInput(e)}
-                    />
+                    <div className='field password'>
+                        <Password 
+                            name='password'
+                            placeholder='Password'
+                            value={form.password ? form.password : ''}
+                            onChange={handleUserInput}
+                        />
+                    </div>
                     <Form.Button onClick={handleSubmit}>Login</Form.Button>
                     <button className='ui red google button' onClick={() => googleLogin()}>
                         <i className='google icon' />
@@ -112,4 +117,4 @@ const mapStateToProps = (state: any) => {
 export default connect(
     mapStateToProps,
     { signIn, formUpdate, formClear, alertSet }
-)(LoginForm);
+)(withAppContext(LoginForm));

@@ -39,16 +39,18 @@
         font-weight: 100;
     }
 
-    .content {
-        width: 100% !important;
-        align-items: left !important;
+    .ui.form {
+        margin-top: 20px;
+
+        .field.password svg {
+            right: 12px;
+        }
     }
     
 
     #generalInfo, #activityLog {
         margin-bottom: 20px;
     }
-
 
 }
 

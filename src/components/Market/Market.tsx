@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     useQuery,
 } from '@tanstack/react-query'
-import { Container } from 'semantic-ui-react';
 
 import { getCoinMarkets } from '@src/api/dataService';
 import { CurrencyFormatter, PercentageFormatter } from '@src/utils/formatter';
 import Search from '@src/components/Search';
+
+import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
 
 import './Market.scss';
 
@@ -31,12 +32,17 @@ interface CoinMarket {
     max_supply: number;
 }
 
-const Market: React.FC = () => {
+const Market: React.FC = ({appContext}: {appContext: AppContextInterface}) => {
 
     const [coinData, setCoinData] = React.useState<CoinMarket[]>([]);
 
+    useEffect(() => {
+        appContext.setLoading(true);
+    }, []);
+
     const onSuccess = (res: any) => {
         console.log('onSuccess', res);
+        appContext.setLoading(false);
         if (res.data.status) {
             return;
         }
@@ -46,6 +52,7 @@ const Market: React.FC = () => {
 
     const onError = (error: any) => {
         console.log('onError', error);
+        appContext.setLoading(false);
     }
     
     // Queries
@@ -143,4 +150,4 @@ const Market: React.FC = () => {
     );
 }
 
-export default Market;
+export default withAppContext(Market);

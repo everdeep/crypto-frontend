@@ -6,3 +6,10 @@ export const postUpdateUserDetails = async (user_details) => {
         { ...user_details }
     );
 };
+
+export const postUpdateUserPassword = async (password) => {
+    return api.post(
+        '/api/user/password',
+        { password: password }
+    );
+}

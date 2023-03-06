@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { formUpdate, formClear, alertSet } from '@src/actions';
+import { formUpdate, formClear, alertSet, signIn } from '@src/actions';
 import { postUpdateUserDetails } from '@src/api/userService';
+import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
 
 import { Form } from 'semantic-ui-react';
 
@@ -11,9 +12,11 @@ interface ProfileDetailsProps {
     formUpdate: (name: string, value: string) => void;
     formClear: () => void;
     alertSet: (message: string, type: string) => void;
+    signIn: (payload: any) => void;
+    appContext: AppContextInterface;
 }
 
-const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, formClear, alertSet}) => {
+const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, formClear, alertSet, signIn, appContext}) => {
 
     const handleUserInput = (e: any) => {
         const name = e.target.name;
@@ -28,7 +31,15 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, 
         // TODO: Validate form
         //
 
-        postUpdateUserDetails(form);
+        appContext.setLoading(true);
+        postUpdateUserDetails(form).then((res: any) => {
+            signIn(res.data);
+            alertSet('Profile details updated successfully.', 'success');
+            appContext.setLoading(false);
+        }).catch((err: any) => {
+            alertSet(err.response.data.message, 'error');
+            appContext.setLoading(false);
+        });
 
         formClear();
     }
@@ -139,5 +150,5 @@ const mapStateToProps = (state: any) => {
 
 export default connect(
     mapStateToProps,
-    { formUpdate, formClear, alertSet }
-)(ProfileDetails);
+    { formUpdate, formClear, alertSet, signIn }
+)(withAppContext(ProfileDetails));
