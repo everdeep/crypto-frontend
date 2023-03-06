@@ -6,6 +6,7 @@ import {
     QueryClient,
     QueryClientProvider,
 } from '@tanstack/react-query'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import { store, persistor } from '@src/configureStore';
 import Application from '@src/components/App';
@@ -20,7 +21,9 @@ createRoot(document.getElementById('app')).render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <QueryClientProvider client={queryClient}>
-                <Application />
+                <GoogleOAuthProvider clientId="657043937655-qvha0bqn6ip4inb4j8tunp8ro6pjdq7i.apps.googleusercontent.com">
+                    <Application />
+                </GoogleOAuthProvider>
             </QueryClientProvider>
         </PersistGate>
     </Provider>

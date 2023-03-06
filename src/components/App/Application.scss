@@ -102,6 +102,33 @@ input:-webkit-autofill:active {
     }
 }
 
+#logo {
+    padding: 0 8px;
+    svg {
+        height: 32px;
+        width: 32px;
+
+        path {
+            fill: var(--app-logo-color);
+        }
+
+        &.rotate {
+            animation: rotate 4.5s linear infinite;
+        }
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}
+
+#gAuthBtn {
+    &:focus {
+        outline: none;
+        // background-color: var(--color-red);
+    }
+}
+
 .rotate {
     animation: rotate 4.5s linear infinite;
 }

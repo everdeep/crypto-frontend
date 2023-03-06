@@ -170,7 +170,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 const mapStateToProps = (state: any) => {
     return { 
         isSignedIn: state.auth.isSignedIn,
-        alert: state.alert
+        alert: state.alert,
     }
 }
 

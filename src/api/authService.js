@@ -1,19 +1,21 @@
 import api from './axiosConfig';
 
-export const HEADERS = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-};
-
 export const login = async (username, password) => {
     return api.post(
         '/api/user/login',
         {
             username: username,
             password: password,
-        },
-        { headers: HEADERS },
-        { withCredentials: true },
+        }
+    );
+};
+
+export const loginGoogle = async (authCode) => {
+    return api.post(
+        '/api/user/google-login',
+        {
+            code: authCode,
+        }
     );
 };
 
@@ -28,7 +30,6 @@ export const register = async (username, password, email) => {
             username: username,
             password: password,
             email: email,
-        },
-        { headers: HEADERS },
+        }
     );
 };

@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { formUpdate, formClear, alertSet } from '@src/actions';
+import { postUpdateUserDetails } from '@src/api/userService';
 
 import { Form } from 'semantic-ui-react';
 
 interface ProfileDetailsProps {
+    auth: any;
     form: any;
     formUpdate: (name: string, value: string) => void;
     formClear: () => void;
     alertSet: (message: string, type: string) => void;
 }
 
-const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formClear, alertSet}) => {
+const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, formClear, alertSet}) => {
 
     const handleUserInput = (e: any) => {
         const name = e.target.name;
@@ -22,7 +24,11 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        // Submit
+        //
+        // TODO: Validate form
+        //
+
+        postUpdateUserDetails(form);
 
         formClear();
     }
@@ -34,12 +40,25 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
                 <label>General Info</label>
                 <Form onSubmit={handleSubmit}>
                     <div className='ui vertically divided grid'>
+                        <div className='row'>
+                            <Form.Input
+                                    fluid
+                                    className='column'
+                                    type='text'
+                                    placeholder={auth.username ? auth.username : 'Display name'}
+                                    name='username'
+                                    maxLength={60}
+                                    transparent
+                                    value={form.username ? form.username : ''}
+                                    onChange={(e) => handleUserInput(e)}
+                                />
+                        </div>
                         <div className='two column row'>
                             <Form.Input
                                 fluid
                                 className='column'
                                 type='text'
-                                placeholder='First Name'
+                                placeholder={auth.first_name ? auth.first_name : 'First Name'}
                                 name='firstName'
                                 maxLength={60}
                                 transparent
@@ -50,7 +69,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
                                 fluid
                                 className='column'
                                 type='text'
-                                placeholder='Last Name'
+                                placeholder={auth.last_name ? auth.last_name : 'Last Name'}
                                 name='lastName'
                                 maxLength={60}
                                 transparent
@@ -63,7 +82,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
                                     fluid
                                     className='column'
                                     type='text'
-                                    placeholder='Email'
+                                    placeholder={auth.email ? auth.email : 'Email'}
                                     name='email'
                                     maxLength={60}
                                     transparent
@@ -76,7 +95,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
                                 fluid
                                 className='column'
                                 type='tel'
-                                placeholder='Phone Number'
+                                placeholder={auth.phone ? auth.phone : 'Phone Number'}
                                 name='phoneNumber'
                                 maxLength={60}
                                 transparent
@@ -91,7 +110,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
                                 name='dob'
                                 maxLength={60}
                                 transparent
-                                value={form.dob ? form.dob : ''}
+                                value={form.dob ? form.dob : auth.dob}
                                 onChange={(e) => handleUserInput(e)}
                             />
                         </div>
@@ -113,7 +132,8 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({form, formUpdate, formCl
 
 const mapStateToProps = (state: any) => {
     return { 
-        form: state.form
+        form: state.form,
+        auth: state.auth
     }
 }
 

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const { inDev } = require('./webpack.helpers');
+const Dotenv = require("dotenv-webpack");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -18,4 +19,8 @@ module.exports = [
         filename: '[name].[chunkhash].css',
         chunkFilename: '[name].[chunkhash].chunk.css',
     }),
+    new Dotenv({
+        path: '../../.env',
+        systemvars: true,
+    })
 ].filter(Boolean);

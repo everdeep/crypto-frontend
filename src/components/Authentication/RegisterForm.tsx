@@ -21,8 +21,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear,
 
     const [loading, setLoading] = useState(false);
     const [formValid, setFormValid] = useState(false);
-    const [formErrors, setFormErrors] = useState({username: '', email: '', password: '', confirmPassword: ''})
-    const [fieldValid, setFieldValid] = useState({username: false, email: false, password: false, confirmPassword: false});
+    const [formErrors, setFormErrors] = useState({email: '', password: '', confirmPassword: ''})
+    const [fieldValid, setFieldValid] = useState({email: false, password: false, confirmPassword: false});
     const [termsAndConditions, setTermsAndConditions] = useState(false);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear,
 
     useEffect(() => {
         // Set the current state of the form
-        setFormValid(fieldValid.username && fieldValid.email && fieldValid.password && fieldValid.confirmPassword);
+        setFormValid(fieldValid.email && fieldValid.password && fieldValid.confirmPassword);
     }, [fieldValid])
 
     const handleValidation = (name: string, value: any) => {
@@ -47,7 +47,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear,
         setFormErrors(formErrors => ({...formErrors, [name]: errorMessage}));
 
         // Set current state of the form
-        setFormValid(fieldValid.username && fieldValid.email && fieldValid.password && fieldValid.confirmPassword);
+        setFormValid(fieldValid.email && fieldValid.password && fieldValid.confirmPassword);
     }
 
     const handleUserInput = (e: any) => {
@@ -94,16 +94,24 @@ const RegisterForm: React.FC<RegisterFormProps> = ({form, formUpdate, formClear,
                         <Form onSubmit={handleSubmit}>
                             <Form.Input fluid
                                 type='text'
-                                placeholder='Username'
-                                name='username'
-                                required={true}
+                                placeholder='First name'
+                                name='firstName'
                                 maxLength={60}
                                 transparent
-                                value={form.username ? form.username : ''}
+                                value={form.firstName ? form.firstName : ''}
                                 onChange={(e) => handleUserInput(e)}
                                 onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
                             />
-                            {!fieldValid.username && <span className='error-label'>{formErrors.username}</span>}
+                            <Form.Input fluid
+                                type='text'
+                                placeholder='Last name'
+                                name='lastName'
+                                maxLength={60}
+                                transparent
+                                value={form.lastName ? form.lastName : ''}
+                                onChange={(e) => handleUserInput(e)}
+                                onBlur={(e: any) => handleValidation(e.target.name, e.target.value)}
+                            />
 
                             <Form.Input
                                 fluid

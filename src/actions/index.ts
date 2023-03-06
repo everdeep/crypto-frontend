@@ -1,12 +1,14 @@
 import { type } from './types';
 
-export const signIn = (userId: string, authToken: string) => {
+interface IAction {
+    type: string;
+    payload?: any;
+}
+
+export const signIn = (payload: any) => {
     return {
         type: type.SIGN_IN,
-        payload: {
-            userId: userId,
-            authToken: authToken,
-        },
+        payload: payload,
     };
 };
 
