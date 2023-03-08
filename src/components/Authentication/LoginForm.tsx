@@ -53,7 +53,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, signIn, formUpdate, formCle
                 formClear();
                 appContext.setLoading(false);
             }).catch((err: any) => {
-                alertSet('The username or password is incorrect.', 'error');
+                alertSet('Failed to login with google.', 'error');
                 appContext.setLoading(false);
             });
         },
