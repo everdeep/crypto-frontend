@@ -3,13 +3,20 @@ import {
     useQuery,
 } from '@tanstack/react-query'
 
-import { getCoinMarkets } from '@src/api/dataService';
+import { getCoinList, getCoinMarkets } from '@src/api/dataService';
 import { CurrencyFormatter, PercentageFormatter } from '@src/utils/formatter';
 import Search from '@src/components/Search';
 
 import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
+import { coinList } from '@assets/data/coinsList';
 
 import './Market.scss';
+
+interface CoinList {
+    id: string;
+    symbol: string;
+    name: string;
+}
 
 interface CoinMarket {
     id: string;
@@ -35,14 +42,28 @@ interface CoinMarket {
 const Market: React.FC = ({appContext}: {appContext: AppContextInterface}) => {
 
     const [coinData, setCoinData] = React.useState<CoinMarket[]>([]);
+    const [filter, setFilter] = React.useState<string>('');
+    const [coinFilter, setCoinFilter] = React.useState<string>('');
 
     useEffect(() => {
         appContext.setLoading(true);
     }, []);
 
-    const onSuccess = (res: any) => {
-        console.log('onSuccess', res);
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+            if (filter.length < 3) {
+                return;
+            }
+
+            onSearch(filter);
+        }, 1000);
+
+        return () => clearTimeout(delayDebounceFn)
+    }, [filter]);
+
+    const onSuccessCoinMarkets = (res: any) => {
         appContext.setLoading(false);
+        console.log(res);
         if (res.data.status) {
             return;
         }
@@ -51,14 +72,27 @@ const Market: React.FC = ({appContext}: {appContext: AppContextInterface}) => {
     }
 
     const onError = (error: any) => {
-        console.log('onError', error);
+        appContext.setLoading(false);
+    }
+
+    const onSearch = (search: string) => {
+        console.log(search);
+        appContext.setLoading(true);
+        const coins = coinList.filter((item: CoinList) => item.id.toLowerCase().includes(search.toLowerCase()));
+        const coinIds = coins.map(coin => coin.id).join(',');
+        setCoinFilter(coinIds);
         appContext.setLoading(false);
     }
     
     // Queries
-    const { isLoading, isSuccess, isError, data, error, refetch } =
-            useQuery({queryKey: ['coin-markets'], queryFn: getCoinMarkets, onSuccess, onError, enabled: true});
+    const { isLoading: isLoadingCoinMarkets, isSuccess: isSucessCoinMarkets, data: dataCoinMarkets, refetch: refetchCoinMarkets } =
+            useQuery({queryKey: ['coin-markets', coinFilter], queryFn: () => getCoinMarkets('usd', coinFilter), onSuccess: onSuccessCoinMarkets, onError, enabled: true});
  
+
+    // const  { isLoading: isLoadingCoinList, isSuccess: isSuccessCoinList, data: dataCoinList, refetch: refetchCoinList } =
+    //         useQuery({queryKey: ['coin-list'], queryFn: getCoinList, onSuccess: onSuccessCoinList, onError, enabled: true});
+
+
     const priceChange = (price: number) => {
         if (price > 0) {
             return (
@@ -77,8 +111,9 @@ const Market: React.FC = ({appContext}: {appContext: AppContextInterface}) => {
     }
 
     return (
-        <div className='market'>
-            <div className='header'>
+        <div className='market__container'>
+            <div className='market__header'>
+                <Search onChange={setFilter} />
             </div>
             <table cellSpacing={0}>
                 <thead>
@@ -110,7 +145,7 @@ const Market: React.FC = ({appContext}: {appContext: AppContextInterface}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {isSuccess && coinData.map((item: CoinMarket) => (
+                    {isSucessCoinMarkets && coinData.map((item: CoinMarket) => (
                         <tr key={item.id}>
                             <td>
                                 {item.market_cap_rank}

@@ -1,11 +1,12 @@
 @import '../App/Theme.scss';
 
-.market {
+.market__container {
     width: 100%;
     max-width: var(--app-content-max-width);
     background-color: var(--app-bgcolor);
 
-    .header {
+    .market__header {
+        position: relative;
         height: 80px;
         width: 100%;
         margin: 20px 0;

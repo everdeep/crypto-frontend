@@ -31,8 +31,15 @@ export const postCurrencyPairConfigUpdate = async (currencyPair, config) => {
     );
 };
 
-export const getCoinMarkets = async () => {
+export const getCoinList = async () => {
     return api.get(
-        '/api/data/coin-markets'
+        '/api/data/coin-list'
+    );
+};
+
+export const getCoinMarkets = async (currency, ids) => {
+    console.log('ids', ids);
+    return api.get(
+        `/api/data/coin-markets?currency=${currency}&ids=${ids}`
     );
 };
