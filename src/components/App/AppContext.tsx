@@ -8,7 +8,7 @@ export interface AppContextInterface {
 const ctxt = React.createContext<AppContextInterface | null>(null);
 
 export const AppContextProvider = ctxt.Provider;
-  
+
 export const AppContextConsumer = ctxt.Consumer;
 
 // This function takes a component...
@@ -19,7 +19,9 @@ export function withAppContext(Component: React.ComponentType<any>) {
         // Notice that we pass through any additional props as well
         return (
             <AppContextConsumer>
-                {appContext => <Component {...props} appContext={appContext} />}
+                {(appContext) => (
+                    <Component {...props} appContext={appContext} />
+                )}
             </AppContextConsumer>
         );
     };

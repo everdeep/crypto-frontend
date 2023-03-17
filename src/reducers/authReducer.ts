@@ -7,7 +7,6 @@ const INITAL_STATE: any = {
 const authReducer = (state = INITAL_STATE, action: any) => {
     switch (action.type) {
         case type.SIGN_IN:
-            console.log('action.payload', action.payload)
             return {
                 ...state,
                 isSignedIn: true,

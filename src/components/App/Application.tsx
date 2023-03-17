@@ -11,9 +11,12 @@ import CSS from 'csstype';
 import 'semantic-ui-css/semantic.min.css'
 import './Application.scss';
 
-import { alertClear } from '@src/actions';
+import { alertClear, signIn, signOut } from '@src/actions';
 import ProtectedRoute from '@src/components/ProtectedRoute';
 import { AppContextInterface, AppContextProvider } from './AppContext';
+
+// API
+import { checkLogin } from '@src/api/authService';
 
 // Public Components
 import Welcome from '@src/components/Welcome';
@@ -42,6 +45,9 @@ import Accounts from '@src/components/Settings/Accounts';
 import Referrals from '@src/components/Settings/Referrals';
 import NotFound from '@src/components/NotFound';
 
+// Admin components
+import Admin from '@src/components/Admin';
+
 // Transition settings
 const duration = 800;
 const defaultStyle = {
@@ -56,12 +62,14 @@ const transitionStyles: Partial<Record<TransitionStatus, CSS.Properties>> = {
 };
 
 interface ApplicationProps {
-    isSignedIn: boolean;
+    isSignedIn: any
     alert: any;
     alertClear: () => void;
+    signIn: (user: any) => void;
+    signOut: () => void;
 }
 
-const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear }) => {
+const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear, signIn, signOut }) => {
 
     const nodeRef = React.useRef(null);
 
@@ -71,7 +79,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 
     const appContext: AppContextInterface = {
         loading: loading,
-        setLoading: setLoading,
+        setLoading: setLoading
     };
 
     /**
@@ -86,6 +94,18 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
         } else if (useDarkTheme == 0) {
             setDarkTheme(false);
         }
+
+        checkLogin().then((response) => {
+            if (response.status == 200) {
+                if (response.data.loggedIn === true) {
+                    signIn(response.data.user);
+                } else {
+                    signOut();
+                }
+            }
+        }).catch((error) => {
+            signOut();
+        });
     }, []);
 
     /**
@@ -168,7 +188,6 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
                                     <Route path="*" element={<Navigate to="/error" replace />} />
                                 </Route>
                                 
-
                             </Route>
 
                             <Route path="error" element={<NotFound setNotFound={setNotFound}/>} />
@@ -181,13 +200,13 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 };
 
 const mapStateToProps = (state: any) => {
-    return { 
-        isSignedIn: state.auth.isSignedIn,
+    return {
+        isSignedIn: state.auth.isSignedIn, 
         alert: state.alert,
     }
 }
 
 export default connect(
     mapStateToProps,
-    { alertClear }
+    { alertClear, signIn, signOut }
 )(Application);

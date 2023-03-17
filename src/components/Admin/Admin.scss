@@ -1,0 +1,92 @@
+@import '@src/components/App/Theme.scss';
+
+.admin {
+    position: relative;
+    left: 0;
+    max-width: var(--app-content-max-width);
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+
+    .admin__container {
+        position: absolute;
+        left: 210px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: calc(100% - 210px);
+    }
+}
+
+.admin__content {
+    padding: 0 40px;
+    width: calc(100% - 210px);
+    height: 100%;
+
+    h1 {
+        align-items: left !important;
+    }
+
+    label {
+        font-size: 24px;
+        font-weight: 100;
+    }
+
+    .ui.form {
+        margin-top: 20px;
+
+        .field.password svg {
+            right: 12px;
+        }
+    }
+
+    #generalInfo,
+    #activityLog {
+        margin-bottom: 20px;
+    }
+}
+
+.admin__column {
+    // position: relative;
+    width: 100%;
+    max-width: 220px;
+    height: 800px;
+    padding: 0 20px;
+    margin: 0 auto;
+    border-left: 1px solid var(--app-border-secondary-color);
+}
+
+@media (max-width: 960px) {
+    .admin__column {
+        display: none;
+    }
+
+    .admin__container {
+        left: 0;
+        max-width: 100% !important;
+        width: 100%;
+    }
+
+    .admin__content {
+        width: calc(100% - 200px);
+    }
+}
+
+@media (max-width: 760px) {
+    .ui.secondary.vertical.pointing.menu {
+        display: none;
+    }
+
+    .admin {
+        > .admin__container {
+            left: 0;
+            max-width: 100% !important;
+            width: 100%;
+            flex-direction: column;
+
+            > .admin__content {
+                width: 100%;
+            }
+        }
+    }
+}

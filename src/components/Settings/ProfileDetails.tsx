@@ -121,7 +121,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, 
                                 name='dob'
                                 maxLength={60}
                                 transparent
-                                value={form.dob ? form.dob : auth.dob}
+                                value={form.dob ? form.dob : auth.dob ? auth.dob : ''}
                                 onChange={(e) => handleUserInput(e)}
                             />
                         </div>

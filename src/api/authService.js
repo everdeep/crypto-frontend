@@ -1,5 +1,10 @@
 import api from './axiosConfig';
 
+// Check if user is logged in
+export const checkLogin = async () => {
+    return api.get('/api/user/login');
+};
+
 export const login = async (username, password) => {
     return api.post(
         '/api/user/login',

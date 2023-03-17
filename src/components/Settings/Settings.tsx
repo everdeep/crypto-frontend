@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 import './Settings.scss';
 
 const Settings: React.FC = () => {
-
     return (
         <div className='settings'>
             <Menu pointing secondary vertical>
-                <Menu.Item
-                    as={NavLink}
-                    to='user'
-                    content='Profile Details'
-                />
+                <Menu.Item as={NavLink} to='user' content='Profile Details' />
                 <Menu.Item
                     as={NavLink}
                     to='verification'
@@ -29,21 +24,9 @@ const Settings: React.FC = () => {
                     to='password'
                     content='Change Password'
                 />
-                <Menu.Item
-                    as={NavLink}
-                    to='security'
-                    content='Security'
-                />
-                <Menu.Item
-                    as={NavLink}
-                    to='accounts'
-                    content='My Accounts'
-                />
-                <Menu.Item
-                    as={NavLink}
-                    to='referrals'
-                    content='Referrals'
-                />
+                <Menu.Item as={NavLink} to='security' content='Security' />
+                <Menu.Item as={NavLink} to='accounts' content='My Accounts' />
+                <Menu.Item as={NavLink} to='referrals' content='Referrals' />
             </Menu>
 
             <div className='settings__container'>
@@ -57,6 +40,6 @@ const Settings: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Settings;
