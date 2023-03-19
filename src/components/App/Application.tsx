@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Transition } from 'react-transition-group';
-import {
-    TransitionStatus,
-} from 'react-transition-group/Transition';
+import { TransitionStatus } from 'react-transition-group/Transition';
 import CSS from 'csstype';
 
 // SCSS
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import './Application.scss';
 
 import { alertClear, signIn, signOut } from '@src/actions';
@@ -34,6 +32,8 @@ import Terminal from '@src/components/Terminal';
 import Market from '@src/components/Market';
 import News from '@src/components/News';
 
+import OrderHistory from '../OrderHistory';
+
 // Settings components
 import Settings from '@src/components/Settings';
 import ProfileDetails from '@src/components/Settings/ProfileDetails';
@@ -51,26 +51,31 @@ import Admin from '@src/components/Admin';
 // Transition settings
 const duration = 800;
 const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
 };
 const transitionStyles: Partial<Record<TransitionStatus, CSS.Properties>> = {
-  entering: { opacity: 1 },
-  entered:  { opacity: 1 },
-  exiting:  { opacity: 0 },
-  exited:  { opacity: 0 },
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
 };
 
 interface ApplicationProps {
-    isSignedIn: any
+    isSignedIn: any;
     alert: any;
     alertClear: () => void;
     signIn: (user: any) => void;
     signOut: () => void;
 }
 
-const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear, signIn, signOut }) => {
-
+const Application: React.FC<ApplicationProps> = ({
+    isSignedIn,
+    alert,
+    alertClear,
+    signIn,
+    signOut,
+}) => {
     const nodeRef = React.useRef(null);
 
     const [darkTheme, setDarkTheme] = useState(true);
@@ -79,7 +84,7 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
 
     const appContext: AppContextInterface = {
         loading: loading,
-        setLoading: setLoading
+        setLoading: setLoading,
     };
 
     /**
@@ -95,17 +100,19 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
             setDarkTheme(false);
         }
 
-        checkLogin().then((response) => {
-            if (response.status == 200) {
-                if (response.data.loggedIn === true) {
-                    signIn(response.data.user);
-                } else {
-                    signOut();
+        checkLogin()
+            .then((response) => {
+                if (response.status == 200) {
+                    if (response.data.loggedIn === true) {
+                        signIn(response.data.user);
+                    } else {
+                        signOut();
+                    }
                 }
-            }
-        }).catch((error) => {
-            signOut();
-        });
+            })
+            .catch((error) => {
+                signOut();
+            });
     }, []);
 
     /**
@@ -141,72 +148,119 @@ const Application: React.FC<ApplicationProps> = ({ isSignedIn, alert, alertClear
     }
 
     return (
-            <BrowserRouter>
+        <BrowserRouter>
+            {loading && <Loading />}
 
-                {loading && <Loading />}
+            {isSignedIn && !notFound && (
+                <Navigation toggleTheme={toggleTheme} isDarkTheme={darkTheme} />
+            )}
 
-                {isSignedIn && !notFound && <Navigation toggleTheme={toggleTheme} isDarkTheme={darkTheme} />}
-
-                {alert.active && (
-                    <Transition className='alert' nodeRef={nodeRef} in={alert.active} timeout={duration}>
-                        {state => (
-                            <div ref={nodeRef} style={{
+            {alert.active && (
+                <Transition
+                    className='alert'
+                    nodeRef={nodeRef}
+                    in={alert.active}
+                    timeout={duration}
+                >
+                    {(state) => (
+                        <div
+                            ref={nodeRef}
+                            style={{
                                 ...defaultStyle,
-                                ...transitionStyles[state]
-                            }}>
-                                <Alert message={alert.message} className={alert.className} />
-                            </div>
-                        )}
-                    </Transition>
-                )}
+                                ...transitionStyles[state],
+                            }}
+                        >
+                            <Alert
+                                message={alert.message}
+                                className={alert.className}
+                            />
+                        </div>
+                    )}
+                </Transition>
+            )}
 
-                <div className='main'>
-                    <AppContextProvider value={appContext}>
-                        <Routes>
-                            <Route element={<ProtectedRoute isSignedIn={!isSignedIn} redirectPath='/' />} >
-                                <Route path='welcome' element={<Welcome />} />
-                                <Route path='login' element={<LoginForm />} />
-                                <Route path='register' element={<RegisterForm />} />
-                                <Route path='reset-password' element={<ResetPassword />} />
-                            </Route>
-                            
-                            <Route element={<ProtectedRoute isSignedIn={isSignedIn} />} >
-                                <Route index element={<Dashboard />} />
-                                <Route path='portfolio' element={<Portfolio />} />
-                                <Route path='terminal' element={<Terminal />} />
-                                <Route path='market' element={<Market />} />
-                                <Route path='news' element={<News />} />
-                                <Route path='settings' element={<Settings />}>
-                                    <Route index element={<ProfileDetails />} />
-                                    <Route path='user' element={<ProfileDetails />} />
-                                    <Route path='verification' element={<Verification />} />
-                                    <Route path='preferences' element={<Preferences />} />
-                                    <Route path='password' element={<ChangePassword />} />
-                                    <Route path='security' element={<Security />} />
-                                    <Route path='accounts' element={<Accounts />} />
-                                    <Route path='referrals' element={<Referrals />} />
-                                    <Route path="*" element={<Navigate to="/error" replace />} />
-                                </Route>
-                                
-                            </Route>
+            <div className='main'>
+                <AppContextProvider value={appContext}>
+                    <Routes>
+                        <Route
+                            element={
+                                <ProtectedRoute
+                                    isSignedIn={!isSignedIn}
+                                    redirectPath='/'
+                                />
+                            }
+                        >
+                            <Route path='welcome' element={<Welcome />} />
+                            <Route path='login' element={<LoginForm />} />
+                            <Route path='register' element={<RegisterForm />} />
+                            <Route
+                                path='reset-password'
+                                element={<ResetPassword />}
+                            />
+                        </Route>
 
-                            <Route path="error" element={<NotFound setNotFound={setNotFound}/>} />
-                            <Route path="*" element={<Navigate to="/error" replace />} />
-                        </Routes>
-                    </AppContextProvider>
-                </div>
-            </BrowserRouter>
+                        <Route
+                            element={<ProtectedRoute isSignedIn={isSignedIn} />}
+                        >
+                            <Route index element={<Dashboard />} />
+                            <Route path='portfolio' element={<Portfolio />} />
+                            <Route path='terminal' element={<Terminal />} />
+                            <Route path='market' element={<Market />} />
+                            <Route path='news' element={<News />} />
+                            <Route path='test' element={<OrderHistory />} />
+                            <Route path='settings' element={<Settings />}>
+                                <Route index element={<ProfileDetails />} />
+                                <Route
+                                    path='user'
+                                    element={<ProfileDetails />}
+                                />
+                                <Route
+                                    path='verification'
+                                    element={<Verification />}
+                                />
+                                <Route
+                                    path='preferences'
+                                    element={<Preferences />}
+                                />
+                                <Route
+                                    path='password'
+                                    element={<ChangePassword />}
+                                />
+                                <Route path='security' element={<Security />} />
+                                <Route path='accounts' element={<Accounts />} />
+                                <Route
+                                    path='referrals'
+                                    element={<Referrals />}
+                                />
+                                <Route
+                                    path='*'
+                                    element={<Navigate to='/error' replace />}
+                                />
+                            </Route>
+                        </Route>
+
+                        <Route
+                            path='error'
+                            element={<NotFound setNotFound={setNotFound} />}
+                        />
+                        <Route
+                            path='*'
+                            element={<Navigate to='/error' replace />}
+                        />
+                    </Routes>
+                </AppContextProvider>
+            </div>
+        </BrowserRouter>
     );
 };
 
 const mapStateToProps = (state: any) => {
     return {
-        isSignedIn: state.auth.isSignedIn, 
+        isSignedIn: state.auth.isSignedIn,
         alert: state.alert,
-    }
-}
+    };
+};
 
-export default connect(
-    mapStateToProps,
-    { alertClear, signIn, signOut }
-)(Application);
+export default connect(mapStateToProps, { alertClear, signIn, signOut })(
+    Application,
+);

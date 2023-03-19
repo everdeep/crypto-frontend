@@ -30,6 +30,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ handleLogout, toggleSidebar, toggleTh
                 <Menu.Item as={NavLink} to='/terminal' content='Terminal' className='menu-item' />
                 <Menu.Item as={NavLink} to='/market' content='Market' className='menu-item' />
                 <Menu.Item as={NavLink} to='/news' content='News' className='menu-item' />
+                <Menu.Item as={NavLink} to='/test' content='Test' className='menu-item' />
 
                 <Menu.Menu position='right'>
                     <Menu.Item>
