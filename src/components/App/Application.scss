@@ -76,7 +76,6 @@ a {
 }
 
 svg {
-
     path {
         fill: var(--app-color);
     }
@@ -88,7 +87,7 @@ svg {
     }
 }
 
-input[type=date] {
+input[type='date'] {
     max-width: 143px;
 }
 
@@ -100,7 +99,6 @@ input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor) inset !important;
     -webkit-text-fill-color: var(--input-color) !important;
 }
-
 
 #app {
     display: flex;
@@ -152,7 +150,7 @@ input:-webkit-autofill:active {
         width: 100px;
         height: 100px;
         animation: rotate 1s linear infinite;
-        
+
         path {
             fill: var(--app-accent-color);
         }
@@ -221,10 +219,7 @@ input:-webkit-autofill:active {
     background: var(--app-bgcolor-secondary);
 }
 
-
-
 .__container {
-
     position: relative;
     top: 15%;
     max-width: 400px;
@@ -276,16 +271,14 @@ input:-webkit-autofill:active {
 // }
 
 .ui {
-
     .divider {
         border-color: var(--ui-divider-color) !important;
         margin: 1rem 1rem !important;
-
     }
 
     &.checkbox {
         margin-bottom: 1rem;
-    
+
         label {
             color: var(--app-color) !important;
         }
@@ -315,7 +308,7 @@ input:-webkit-autofill:active {
             width: 21px !important;
             // content: url(../../../assets/icons/24/menu.png);
         }
-    
+
         .item {
             color: var(--app-color) !important;
 
@@ -332,20 +325,18 @@ input:-webkit-autofill:active {
 
         // UI Dropdown Menu
         .ui.dropdown {
-
             i.icon {
                 font-size: 1.5em !important;
             }
 
-            >.menu  {
+            > .menu {
                 // padding: 10px 10px !important;
                 color: var(--app-color) !important;
-                background:  var(--app-bgcolor-secondary) !important;
-            
+                background: var(--app-bgcolor-secondary) !important;
+
                 .item {
                     padding: 0.8rem 0.7rem !important;
                     color: var(--app-color) !important;
-
 
                     &.info {
                         &:hover {
@@ -359,7 +350,7 @@ input:-webkit-autofill:active {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-    
+
                         > img {
                             filter: var(--app-icon-filter);
                             width: 24px;
@@ -369,7 +360,9 @@ input:-webkit-autofill:active {
                     }
 
                     &:hover {
-                        background: var(--app-bgcolor-secondary-hover) !important;
+                        background: var(
+                            --app-bgcolor-secondary-hover
+                        ) !important;
                     }
                 }
 
@@ -378,15 +371,12 @@ input:-webkit-autofill:active {
                     padding: 0 20px;
                     color: var(--app-color);
                 }
-
             }
         }
 
         // Sidebar
         &.sidebar {
-
             .item {
-
                 > div {
                     display: flex;
                     flex-direction: row;
@@ -399,7 +389,6 @@ input:-webkit-autofill:active {
                         object-fit: cover;
                     }
                 }
-
             }
 
             span {
@@ -411,20 +400,19 @@ input:-webkit-autofill:active {
 
         // Vertical menu
         &.vertical {
-
             background: var(--app-bgcolor-secondary);
-        
+
             .item {
                 color: var(--app-color);
                 border-radius: 0;
                 padding: 1rem 1rem;
                 font-size: medium;
-        
+
                 &:focus {
                     color: var(--selection-color);
                     font-weight: 400;
                 }
-        
+
                 &:hover {
                     background: var(--app-bgcolor-secondary-hover);
                 }
@@ -432,20 +420,18 @@ input:-webkit-autofill:active {
 
             // Secondary design
             &.pointing.secondary {
-
                 position: fixed;
                 background: none;
-                
+
                 .item {
                     color: var(--app-color);
                     border-radius: 0;
                     padding: 1rem 1rem;
                     font-size: medium;
-            
+
                     &.active:focus {
                         color: var(--selection-color);
                         font-weight: 400 !important;
-            
                     }
 
                     &:hover {
@@ -470,29 +456,29 @@ input:-webkit-autofill:active {
             /*Fix opacity issue on Firefox*/
             opacity: 1;
         }
-    
+
         *:disabled {
             cursor: default;
             filter: blur(2px);
         }
-    
+
         button {
             // font-weight: bold;
             margin-top: 2rem;
             width: 100%;
             padding: 15px 10px;
         }
-    
+
         input[type] {
             border: none;
             border-radius: 0;
-    
+
             &:focus {
                 border: none;
                 border-radius: 0;
             }
         }
-    
+
         .error-label {
             text-align: left !important;
             float: left !important;
@@ -503,9 +489,8 @@ input:-webkit-autofill:active {
             font-weight: 600;
             color: rgb(210, 45, 45);
         }
-    
-        .field {
 
+        .field {
             > .input {
                 font-size: medium;
 
@@ -515,13 +500,12 @@ input:-webkit-autofill:active {
                 }
 
                 input[type] {
-                    
                     height: 40px;
                     padding: 0 10px !important;
                     color: var(--input-color);
                     border-bottom: 1px solid var(--app-border-color) !important;
                     // background: none;
-            
+
                     /* Add asterisk to required input fields */
                     &:required {
                         background-image: url(../../../assets/icons/24/asterisk-red.png);
@@ -529,7 +513,7 @@ input:-webkit-autofill:active {
                         background-repeat: no-repeat;
                         background-size: 13px 13px;
                     }
-            
+
                     /* Scale input on focus */
                     &:focus {
                         color: var(--selection-color) !important;
@@ -537,14 +521,13 @@ input:-webkit-autofill:active {
                         transition: all 0.1s ease-in-out;
                         border-bottom: 1px solid var(--selection-border-color) !important;
                     }
-    
+
                     &:disabled {
                         cursor: default;
                         filter: blur(2px);
                     }
-    
+
                     &:hover {
-   
                     }
 
                     &::placeholder {
@@ -552,17 +535,17 @@ input:-webkit-autofill:active {
                     }
                 }
             }
-    
-    
+
             &.field input:-webkit-autofill {
-                -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary) inset !important;
+                -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary)
+                    inset !important;
                 border-color: var(--app-border-color) !important;
-            
+
                 &:focus {
-                    -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary) inset !important;
+                    -webkit-box-shadow: 0 0 0 30px var(--app-bgcolor-secondary)
+                        inset !important;
                     -webkit-text-fill-color: var(--selection-color) !important;
                 }
-
             }
 
             &.password {
@@ -579,26 +562,24 @@ input:-webkit-autofill:active {
                 }
             }
         }
-    
     }
 
     // ==============================
     // Grid
     // ==============================
-    
+
     &.grid {
         &.vertically.divided {
             padding: 15px 0;
-        
+
             .row {
                 border: none;
                 padding: 5px !important;
-        
-                
+
                 .column {
                     margin: 0 !important;
                 }
-        
+
                 &::before {
                     content: none;
                 }

@@ -23,12 +23,17 @@ const Table: React.FC<ITableProps> = ({
     columnDefs,
     defaultColDef,
 }) => {
+
+    const gridStyle = {
+        width: '100%',
+        height: '100%',
+    };
     const gridRef = useRef();
 
     return (
         <div
             className='ag-theme-alpine-dark'
-            style={{ width: '100%', height: '100%' }}
+            style={gridStyle}
         >
             <AgGridReact
                 className='table'
@@ -40,6 +45,9 @@ const Table: React.FC<ITableProps> = ({
                 rowData={rowData}
                 onGridReady={(params: any) => {
                     params.api.showLoadingOverlay();
+                }}
+                gridOptions={{
+                    suppressCellFocus: true,
                 }}
             ></AgGridReact>
         </div>

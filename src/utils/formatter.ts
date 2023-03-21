@@ -8,9 +8,8 @@ export const CurrencyFormatter = new Intl.NumberFormat('en-US', {
     //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
-
 export const PercentageFormatter = Intl.NumberFormat('en-US', {
     style: 'percent',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  })
+});

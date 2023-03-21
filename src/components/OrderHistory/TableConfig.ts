@@ -25,7 +25,7 @@ const dateFilterParams = {
 
 export const columnDefs = [
     { field: 'order_id', headerName: 'Order Id', hide: true },
-    { field: 'currency_pair', headerName: 'Currency Pair' },
+    { field: 'currency_pair', headerName: 'Symbol' },
     { field: 'status', headerName: 'Status' },
     { field: 'side', headerName: 'Side' },
     { field: 'cost', headerName: 'Price' },
@@ -39,7 +39,7 @@ export const columnDefs = [
         field: 'created_at',
         headerName: 'Created At',
         cellClass: 'dateStandard',
-        minWidth: 150,
+        minWidth: 130,
         filter: 'agDateColumnFilter',
         filterParams: dateFilterParams,
         valueFormatter: (params: any) => {
@@ -50,7 +50,7 @@ export const columnDefs = [
         field: 'updated_at',
         headerName: 'Updated At',
         cellClass: 'dateStandard',
-        minWidth: 150,
+        minWidth: 130,
         filter: 'agDateColumnFilter',
         filterParams: dateFilterParams,
         valueFormatter: (params: any) => {

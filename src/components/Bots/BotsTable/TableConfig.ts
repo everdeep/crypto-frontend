@@ -22,23 +22,28 @@ const dateFilterParams = {
 };
 
 export const columnDefs = [
-    { field: 'id', headerName: 'ID' },
+    { field: 'id', headerName: 'ID', hide: true },
     { field: 'strategy', headerName: 'Strategy' },
-    { field: 'currency_pair', headerName: 'Currency Pair' },
+    { field: 'currency_pair', headerName: 'Symbol' },
     { field: 'interval', headerName: 'Interval' },
     {
         field: 'signal',
         headerName: 'Signal',
         valueFormatter: (params: any) => {
-            console.log('params', params);
-            return params.value.signal;
+            if (params.value.signal === 1) {
+                return 'Buy';
+            } else if (params.value.signal === -1) {
+                return 'Sell';
+            }
+
+            return 'Hold';
         },
     },
     {
         field: 'last_trade_time',
         headerName: 'Last Trade Time',
         cellClass: 'dateStandard',
-        minWidth: 150,
+        minWidth: 130,
         filter: 'agDateColumnFilter',
         filterParams: dateFilterParams,
         valueFormatter: (params: any) => {

@@ -13,7 +13,7 @@ export const getOrders = async () => {
 };
 
 export const getBots = async () => {
-    return api.get(`/api/data/config?autotrade=true`);
+    return api.get(`/api/data/config`);
 };
 
 export const getCurrencyPairConfig = async (currencyPair) => {

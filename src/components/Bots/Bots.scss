@@ -1,0 +1,27 @@
+.bots__container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    max-width: var(--app-content-max-width);
+    grid-template-columns: minmax(0, 300px) auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        'info content';
+
+    .bots__info {
+        grid-area: info;
+        padding: 10px 20px;
+
+        .menu {
+            width: 100%;
+            max-width: 280px;
+        }
+
+    }
+
+    .bots__content {
+        grid-area: content;
+        padding: 10px 20px;
+    }
+
+}

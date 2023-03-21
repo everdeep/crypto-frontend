@@ -6,7 +6,7 @@ export const validateField = (fieldName: string, value: any, form: any) => {
     if (!value) {
         return { isValid, errorMessage: '' };
     }
-    
+
     switch (fieldName) {
         case 'username':
             if (value.length < 3) {

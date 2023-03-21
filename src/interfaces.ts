@@ -32,12 +32,14 @@ export interface IBot {
 export interface ICurrencyPairConfig {
     id: number;
     asset_allocation: number;
-    autotrade: boolean;
+    bot_name: string;
     currency_pair: string;
     exchange: string;
     interval: string;
+    is_active: boolean;
     is_simulated: boolean;
     limit: number;
+    orders: IOrder[];
     signal: ISignal;
     stop_loss: number;
     strategy: string;

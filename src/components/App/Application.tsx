@@ -27,12 +27,17 @@ import Loading from '@src/components/Loading';
 
 // Platform components
 import Dashboard from '@src/components/Dashboard';
-import Portfolio from '@src/components/Portfolio';
+import Overview from '@src/components/Overview';
 import Terminal from '@src/components/Terminal';
 import Market from '@src/components/Market';
 import News from '@src/components/News';
 
 import OrderHistory from '../OrderHistory';
+
+// Bots components
+import Bots from '@src/components/Bots';
+import MyBots from '@src/components/Bots/MyBots';
+import Strategies from '@src/components/Bots/Strategies';
 
 // Settings components
 import Settings from '@src/components/Settings';
@@ -203,7 +208,16 @@ const Application: React.FC<ApplicationProps> = ({
                             element={<ProtectedRoute isSignedIn={isSignedIn} />}
                         >
                             <Route index element={<Dashboard />} />
-                            <Route path='portfolio' element={<Portfolio />} />
+                            <Route path='overview' element={<Overview />} />
+                            <Route path='bots' element={<Bots />}>
+                                <Route index element={<MyBots />} />
+                                <Route path='my-bots' element={<MyBots />} />
+                                <Route path='strategies' element={<Strategies />} />
+                                <Route
+                                    path='*'
+                                    element={<Navigate to='/error' replace />}
+                                />
+                            </Route>
                             <Route path='terminal' element={<Terminal />} />
                             <Route path='market' element={<Market />} />
                             <Route path='news' element={<News />} />

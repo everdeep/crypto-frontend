@@ -28,9 +28,16 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
                     <img src={icons.dashboard} /> <span>Dashboard</span>
                 </div>
             </Menu.Item>
-            <Menu.Item as={NavLink} to='/portfolio' onClick={() => setSidebarOpen(false)}>
+
+            <Menu.Item as={NavLink} to='/overview' onClick={() => setSidebarOpen(false)}>
                 <div>
-                    <img src={icons.portfolio} /> <span>Portfolio</span>
+                    <img src={icons.portfolio} /> <span>Overview</span>
+                </div>
+            </Menu.Item>
+
+            <Menu.Item as={NavLink} to='/bots' onClick={() => setSidebarOpen(false)}>
+                <div>
+                    <img src={icons.portfolio} /> <span>Bots</span>
                 </div>
             </Menu.Item>
 

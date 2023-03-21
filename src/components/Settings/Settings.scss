@@ -1,16 +1,12 @@
 @import '@src/components/App/Theme.scss';
 
-
-
 .settings {
-    
     position: relative;
     left: 0;
     max-width: var(--app-content-max-width);
     width: 100%;
     height: 100%;
     padding: 50px 0;
-
 
     .settings__container {
         position: absolute;
@@ -23,7 +19,6 @@
 }
 
 .settings__content {
-
     padding: 0 40px;
     width: calc(100% - 210px);
     height: 100%;
@@ -44,12 +39,11 @@
             right: 12px;
         }
     }
-    
 
-    #generalInfo, #activityLog {
+    #generalInfo,
+    #activityLog {
         margin-bottom: 20px;
     }
-
 }
 
 .settings__column {
@@ -76,11 +70,9 @@
     .settings__content {
         width: calc(100% - 200px);
     }
-
 }
 
 @media (max-width: 760px) {
-
     .ui.secondary.vertical.pointing.menu {
         display: none;
     }

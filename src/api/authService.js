@@ -6,22 +6,16 @@ export const checkLogin = async () => {
 };
 
 export const login = async (username, password) => {
-    return api.post(
-        '/api/user/login',
-        {
-            username: username,
-            password: password,
-        }
-    );
+    return api.post('/api/user/login', {
+        username: username,
+        password: password,
+    });
 };
 
 export const loginGoogle = async (authCode) => {
-    return api.post(
-        '/api/user/google-login',
-        {
-            code: authCode,
-        }
-    );
+    return api.post('/api/user/google-login', {
+        code: authCode,
+    });
 };
 
 export const logout = async () => {
@@ -29,12 +23,9 @@ export const logout = async () => {
 };
 
 export const register = async (username, password, email) => {
-    return api.post(
-        '/api/user/register',
-        {
-            username: username,
-            password: password,
-            email: email,
-        }
-    );
+    return api.post('/api/user/register', {
+        username: username,
+        password: password,
+        email: email,
+    });
 };
