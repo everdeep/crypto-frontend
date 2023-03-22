@@ -62,3 +62,18 @@ export interface IStrategyConfig {
     key: string;
     value: string;
 }
+
+export interface IActivity {
+    id: number;
+    remote_addr: string;
+    ip_info: IIPInfo;
+    datetime: Date;
+}
+
+export interface IIPInfo {
+    city: string;
+    country: string;
+    continent: string;
+    lat: number;
+    lon: number;
+}

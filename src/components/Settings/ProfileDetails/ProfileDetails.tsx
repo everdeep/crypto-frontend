@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { formUpdate, formClear, alertSet, signIn } from '@src/actions';
 import { postUpdateUserDetails } from '@src/api/userService';
 import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
+import { ActivityLog } from './ActivityLog';
 
 import { Form } from 'semantic-ui-react';
+
+import './ProfileDetails.scss';
 
 interface ProfileDetailsProps {
     auth: any;
@@ -131,9 +134,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, 
                     </div>
                 </Form>
             </div>
-            <div id='activityLog' className='content'>
-                <label>Activity Log</label>
-            </div>
+            <ActivityLog />
             <div id='accountActions' className='content'>
                 <label>Account Actions</label>
             </div>

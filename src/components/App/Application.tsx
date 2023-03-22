@@ -28,9 +28,9 @@ import Loading from '@src/components/Loading';
 // Platform components
 import Dashboard from '@src/components/Dashboard';
 import Overview from '@src/components/Overview';
-import Terminal from '@src/components/Terminal';
-import Market from '@src/components/Market';
-import News from '@src/components/News';
+// import Terminal from '@src/components/Terminal';
+// import Market from '@src/components/Market';
+// import News from '@src/components/News';
 
 import OrderHistory from '../OrderHistory';
 
@@ -47,7 +47,7 @@ import Preferences from '@src/components/Settings/Preferences';
 import ChangePassword from '@src/components/Settings/ChangePassword';
 import Security from '@src/components/Settings/Security';
 import Accounts from '@src/components/Settings/Accounts';
-import Referrals from '@src/components/Settings/Referrals';
+// import Referrals from '@src/components/Settings/Referrals';
 import NotFound from '@src/components/NotFound';
 
 // Admin components
@@ -104,6 +104,9 @@ const Application: React.FC<ApplicationProps> = ({
         } else if (useDarkTheme == 0) {
             setDarkTheme(false);
         }
+
+        // Reset not found
+        setNotFound(false);
 
         checkLogin()
             .then((response) => {
@@ -218,6 +221,7 @@ const Application: React.FC<ApplicationProps> = ({
                                     element={<Navigate to='/error' replace />}
                                 />
                             </Route>
+                            {/* Not in MVP */}
                             {/* <Route path='terminal' element={<Terminal />} />
                             <Route path='market' element={<Market />} />
                             <Route path='news' element={<News />} /> */}
@@ -242,10 +246,11 @@ const Application: React.FC<ApplicationProps> = ({
                                 />
                                 <Route path='security' element={<Security />} />
                                 <Route path='accounts' element={<Accounts />} />
-                                <Route
+                                {/* Not in MVP */}
+                                {/* <Route
                                     path='referrals'
                                     element={<Referrals />}
-                                />
+                                /> */}
                                 <Route
                                     path='*'
                                     element={<Navigate to='/error' replace />}

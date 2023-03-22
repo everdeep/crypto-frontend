@@ -12,3 +12,8 @@ export const postUpdateUserPassword = async (password) => {
 export const getUserRole = async () => {
     return api.get('/api/user/role');
 };
+
+// Get user activity
+export const getLoginActivity = async () => {
+    return api.get('/api/user/activity?action=LOGIN');
+}

@@ -6,7 +6,7 @@ interface NotFoundProps {
 
 const NotFound: React.FC<NotFoundProps> = ({ setNotFound }) => {
     React.useEffect(() => {
-        setNotFound(true);
+        // setNotFound(true);
     }, []);
 
     return (

@@ -26,7 +26,8 @@ const Settings: React.FC = () => {
                 />
                 <Menu.Item as={NavLink} to='security' content='Security' />
                 <Menu.Item as={NavLink} to='accounts' content='My Accounts' />
-                <Menu.Item as={NavLink} to='referrals' content='Referrals' />
+                {/* Not in MVP */}
+                {/* <Menu.Item as={NavLink} to='referrals' content='Referrals' /> */}
             </Menu>
 
             <div className='settings__container'>
