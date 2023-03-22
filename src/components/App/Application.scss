@@ -325,6 +325,7 @@ input:-webkit-autofill:active {
 
         // UI Dropdown Menu
         .ui.dropdown {
+
             i.icon {
                 font-size: 1.5em !important;
             }
@@ -333,6 +334,8 @@ input:-webkit-autofill:active {
                 // padding: 10px 10px !important;
                 color: var(--app-color) !important;
                 background: var(--app-bgcolor-secondary) !important;
+                max-width: 200px !important;
+
 
                 .item {
                     padding: 0.8rem 0.7rem !important;

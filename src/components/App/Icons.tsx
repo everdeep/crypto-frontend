@@ -11,6 +11,7 @@ import shield from '@assets/icons/24/shield.png';
 import exclaim from '@assets/icons/24/exclaim.png';
 import sun from '@assets/icons/24/sun.png';
 import moon from '@assets/icons/24/moon.png';
+import bmo from '@assets/icons/24/bmo.png';
 import chart from '@assets/icons/chart.png';
 import market from '@assets/icons/market.png';
 import gear from '@assets/icons/gear.png';
@@ -37,5 +38,6 @@ export const icons = {
     shield,
     exclaim,
     sun,
-    moon
+    moon,
+    bmo,
 };

@@ -37,11 +37,11 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
 
             <Menu.Item as={NavLink} to='/bots' onClick={() => setSidebarOpen(false)}>
                 <div>
-                    <img src={icons.portfolio} /> <span>Bots</span>
+                    <img src={icons.bmo} /> <span>Bots</span>
                 </div>
             </Menu.Item>
 
-            <Menu.Item as={NavLink} to='/terminal' onClick={() => setSidebarOpen(false)}>
+            {/* <Menu.Item as={NavLink} to='/terminal' onClick={() => setSidebarOpen(false)}>
                 <div>
                     <img src={icons.chart} /> <span>Terminal</span>
                 </div>
@@ -57,7 +57,7 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
                 <div>
                     <img src={icons.newspaper} /> <span>News</span>
                 </div>
-            </Menu.Item>
+            </Menu.Item> */}
 
             {/* Bottom section */}
             <Divider />

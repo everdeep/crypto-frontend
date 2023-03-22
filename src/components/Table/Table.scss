@@ -1,6 +1,7 @@
 @import '../App/Theme.scss';
 
 .table {
+    transition: background-color 0.5s ease !important;
     // --ag-foreground-color: rgb(126, 46, 132);
     --ag-background-color: transparent;
     --ag-data-color: var(--app-color);

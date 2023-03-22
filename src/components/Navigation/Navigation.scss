@@ -21,6 +21,13 @@
     }
 }
 
+#unverified {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+}
+ 
+
 #logo {
     cursor: default;
 

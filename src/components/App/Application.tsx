@@ -218,9 +218,9 @@ const Application: React.FC<ApplicationProps> = ({
                                     element={<Navigate to='/error' replace />}
                                 />
                             </Route>
-                            <Route path='terminal' element={<Terminal />} />
+                            {/* <Route path='terminal' element={<Terminal />} />
                             <Route path='market' element={<Market />} />
-                            <Route path='news' element={<News />} />
+                            <Route path='news' element={<News />} /> */}
                             <Route path='test' element={<OrderHistory />} />
                             <Route path='settings' element={<Settings />}>
                                 <Route index element={<ProfileDetails />} />

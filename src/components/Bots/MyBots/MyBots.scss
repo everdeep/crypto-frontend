@@ -1,3 +1,5 @@
+@import '../../App/Theme.scss';
+
 .mybots__container {
     width: 100%;
     height: 100%;
@@ -43,6 +45,7 @@
 
         &.header {
             background-color: none;
+            color: var(--app-accent-color);
             font-weight: 600;
         }
 
