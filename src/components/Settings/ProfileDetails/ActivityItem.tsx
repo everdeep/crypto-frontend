@@ -20,7 +20,7 @@ export const ActivityItem: React.FC<IActivityItemProps> = ({activity}) => {
                 <span>{activity.remote_addr}</span>
             </div>
             <div className='col'>
-                <span>{activity.ip_info.country}</span>
+                <span>{activity.ip_info.country ? activity.ip_info.country : 'Unkown'}</span>
             </div>
         </li>
     );

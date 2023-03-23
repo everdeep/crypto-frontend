@@ -15,5 +15,10 @@ export const getUserRole = async () => {
 
 // Get user activity
 export const getLoginActivity = async () => {
-    return api.get('/api/user/activity?action=LOGIN');
+    return api.get('/api/user/activity');
+}
+
+// Delete user
+export const deleteUser = async () => {
+    return api.delete(`/api/user`);
 }

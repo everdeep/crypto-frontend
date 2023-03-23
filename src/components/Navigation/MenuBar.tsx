@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { icons } from '@src/components/App/Icons';
+import { icons } from '@src/Icons';
 
 interface MenuBarProps {
     handleLogout: () => void;
@@ -20,12 +20,10 @@ const MenuBar: React.FC<MenuBarProps> = ({
     isDarkTheme,
     auth,
 }) => {
-
     const renderUsername = () => {
         if (auth.username) {
-            
         }
-    }
+    };
 
     return (
         <>

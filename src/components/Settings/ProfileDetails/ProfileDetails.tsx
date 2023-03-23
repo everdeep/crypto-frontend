@@ -4,6 +4,7 @@ import { formUpdate, formClear, alertSet, signIn } from '@src/actions';
 import { postUpdateUserDetails } from '@src/api/userService';
 import { AppContextInterface, withAppContext } from '@src/components/App/AppContext';
 import { ActivityLog } from './ActivityLog';
+import { AccountActions } from './AccountActions';
 
 import { Form } from 'semantic-ui-react';
 
@@ -135,9 +136,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({auth, form, formUpdate, 
                 </Form>
             </div>
             <ActivityLog />
-            <div id='accountActions' className='content'>
-                <label>Account Actions</label>
-            </div>
+            <AccountActions />
         </div>
     );
 }

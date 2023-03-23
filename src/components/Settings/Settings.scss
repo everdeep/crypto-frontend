@@ -1,4 +1,4 @@
-@import '@src/components/App/Theme.scss';
+@import '@src/Theme.scss';
 
 .settings {
     position: relative;
@@ -19,7 +19,7 @@
 }
 
 .settings__content {
-    padding: 0 40px;
+    padding: 0 40px 40px 40px;
     width: calc(100% - 210px);
     height: 100%;
 

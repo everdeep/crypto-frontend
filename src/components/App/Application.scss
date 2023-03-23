@@ -7,7 +7,7 @@
  * @package : Application Sass Stylesheet
 */
 
-@import './Theme.scss';
+@import '@src/Theme.scss';
 
 /**
  *==========================================================================
@@ -282,6 +282,10 @@ input:-webkit-autofill:active {
         label {
             color: var(--app-color) !important;
         }
+    }
+
+    &.button {
+        padding: 15px 10px;
     }
 
     // ==============================

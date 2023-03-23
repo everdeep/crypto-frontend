@@ -30,8 +30,8 @@ export const ActivityLog: React.FC = () => {
 
     const renderActivityItems = () => {
         const list: any = [];
-        rowData.forEach((activity: IActivity) => {
-            list.push(<ActivityItem activity={activity} />);
+        rowData.forEach((activity: IActivity, index) => {
+            list.push(<ActivityItem key={index} activity={activity} />);
         });
         return list;
     };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Sidebar, Divider } from 'semantic-ui-react'
+import { Menu, Sidebar, Divider } from 'semantic-ui-react';
 
-import { icons } from '@src/components/App/Icons';
+import { icons } from '@src/Icons';
 
 interface SideBarProps {
     handleLogout: () => void;
@@ -10,8 +10,11 @@ interface SideBarProps {
     open: boolean;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open }) => {
-
+const SideBar: React.FC<SideBarProps> = ({
+    handleLogout,
+    setSidebarOpen,
+    open,
+}) => {
     return (
         <Sidebar
             as={Menu}
@@ -23,19 +26,31 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
             visible={open}
             width='wide'
         >
-            <Menu.Item as={NavLink} to='/' onClick={() => setSidebarOpen(false)} >
+            <Menu.Item
+                as={NavLink}
+                to='/'
+                onClick={() => setSidebarOpen(false)}
+            >
                 <div>
                     <img src={icons.dashboard} /> <span>Dashboard</span>
                 </div>
             </Menu.Item>
 
-            <Menu.Item as={NavLink} to='/overview' onClick={() => setSidebarOpen(false)}>
+            <Menu.Item
+                as={NavLink}
+                to='/overview'
+                onClick={() => setSidebarOpen(false)}
+            >
                 <div>
                     <img src={icons.portfolio} /> <span>Overview</span>
                 </div>
             </Menu.Item>
 
-            <Menu.Item as={NavLink} to='/bots' onClick={() => setSidebarOpen(false)}>
+            <Menu.Item
+                as={NavLink}
+                to='/bots'
+                onClick={() => setSidebarOpen(false)}
+            >
                 <div>
                     <img src={icons.bmo} /> <span>Bots</span>
                 </div>
@@ -62,7 +77,11 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
             {/* Bottom section */}
             <Divider />
 
-            <Menu.Item as={NavLink} to='/settings' onClick={() => setSidebarOpen(false)}>
+            <Menu.Item
+                as={NavLink}
+                to='/settings'
+                onClick={() => setSidebarOpen(false)}
+            >
                 <div>
                     <img src={icons.gear} /> <span>User Settings</span>
                 </div>
@@ -79,6 +98,6 @@ const SideBar: React.FC<SideBarProps> = ({ handleLogout, setSidebarOpen, open })
             </Menu.Item>
         </Sidebar>
     );
-}
+};
 
 export default SideBar;

@@ -2,6 +2,8 @@
     .activity__list {
         list-style: none;
         padding: 0;
+        max-height: 176px;
+        overflow-y: auto;
     }
 
     .row {
@@ -17,21 +19,24 @@
         }
     
         &.item {
-    
-            // cursor: pointer;
-            // transition: background-color 0.2s ease-in-out;
-    
-            // &:hover {
-            //     background-color: var(--app-bgcolor-secondary);
-            // }
-    
+
     
         }
+    }
+}
+
+#accountActions {
+    >div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas: "deleteAccount deleteAccount deleteAccount";
+        padding: 10px 0 0 0;
     
-        .col {
-            &-2 {
-                grid-column: 2 / span 3;
-            }
+        &.header {
+            background-color: none;
+            color: var(--app-color);
+            // font-weight: 600;
         }
     }
 }
