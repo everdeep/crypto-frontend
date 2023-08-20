@@ -12,7 +12,7 @@ module.exports = [
     inDev() && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
         template: 'src/index.html',
-        favicon: 'assets/images/logo.png',
+        favicon: 'assets/images/favicon.ico',
         inject: true,
     }),
     new MiniCssExtractPlugin({

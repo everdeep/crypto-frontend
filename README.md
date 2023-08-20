@@ -1,47 +1,4 @@
-# React Webpack Typescript (RWT)
-
-React Webpack Typescript Boilerplate with custom webpack configurations for hot reloading.
-
-A minimal secure boilerplate for writing Web Applications using [React](https://reactjs.org/), [Webpack](https://webpack.js.org/) & [TypeScript](https://www.typescriptlang.org/). <br /> This project makes use of latest packages and configurations to serve the best environment for development.
-
-<br>
-
-## Screenshot
-
-<img src="assets/images/screenshot.png" />
-
-<br>
-
-## Core Features
-
--   ⚛️ React
--   🌀 TypeScript
--   🥗 SASS/SCSS Loader
--   🛶 LESS Loader (optional)
--   🎨 CSS Loader
--   📸 Image Loader
--   🆎 Font Loader
--   🧹 ESLint
--   🔱 Webpack & Configuration
--   🧩 Aliases for Project Paths
--   🔥 React Fast Refresh + Webpack HMR
--   🌞 Dark Mode + Light Mode (Theme)
-
-<br />
-
 ## Installation
-
-#### To install this boilerplate you need to run following commands
-
-<br>
-
-Clone the repository :
-
-```bash
-git clone https://github.com/codesbiome/react-webpack-typescript-2022
-```
-
-<br>
 
 Install dependencies using Yarn or NPM or PNPM :
 

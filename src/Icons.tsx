@@ -1,4 +1,4 @@
-import logo from '@assets/images/logo.png';
+// import logo from '@assets/images/favicon.ico';
 import dashboard from '@assets/icons/24/dashboard.png';
 import wrench from '@assets/icons/24/wrench.png';
 import portfolio from '@assets/icons/24/portfolio.png';
@@ -20,7 +20,7 @@ import exit from '@assets/icons/exit.png';
 import service from '@assets/icons/service.png';
 
 export const icons = {
-    logo,
+    // logo,
     dashboard,
     chart,
     market,
